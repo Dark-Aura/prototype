@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mentors - Plan for Money</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #5A54D9;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --background: #F8F9FA;
+        }
+
+        .navbar {
+            background: white;
+            padding: 16px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar .logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin: 0;
+        }
+
+        .navbar .logo span {
+            color: #6C63FF;
+        }
+
+        .navbar .logo a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .profile-dropdown {
+            position: relative;
+            display: none;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-icon:hover {
+            background: var(--secondary);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .profile-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: var(--primary);
+        }
+
+        .dropdown-item i {
+            font-size: 1rem;
+            width: 20px;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+
+        .nav-links a {
+            color: #666666;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #6C63FF;
+        }
+
+        .nav-links .cta-button {
+            background: #6C63FF;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .nav-links .cta-button:hover {
+            background: #5A54D9;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 0;
+            }
+
+            .navbar .logo img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .navbar .logo h1 {
+                font-size: 1.125rem;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-links a {
+                font-size: 0.813rem;
+            }
+
+            .nav-links .cta-button {
+                padding: 6px 12px;
+            }
+        }
+
+        .mentors-page {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-title h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-title p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mentor-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+            align-items: stretch;
+        }
+
+        .mentor-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.1);
+        }
+
+        .card-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 2rem;
+            color: white;
+            position: relative;
+            text-align: center;
+        }
+
+        .card-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: white;
+            transform: skewY(-3deg);
+        }
+
+        .mentor-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mentor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mentor-info {
+            padding: 2rem;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mentor-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .mentor-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .mentor-bio {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .expertise-tag {
+            background: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .mentor-social {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+
+        .mentor-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--background);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .mentor-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .schedule-meeting {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .schedule-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .schedule-btn i {
+            font-size: 1rem;
+        }
+
+        .meeting-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meeting-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-slot {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .time-slot.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .modal-btn.secondary {
+            background: none;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .modal-btn.primary:hover {
+            background: var(--secondary);
+        }
+
+        .modal-btn.secondary:hover {
+            border-color: #666;
+            color: #333;
+        }
+
+        @media (max-width: 1024px) {
+            .mentor-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mentor-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card-banner {
+                padding: 1.5rem;
+            }
+
+            .mentor-info {
+                padding: 1.5rem;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .secondary-search {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .secondary-search .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .secondary-search .search-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .secondary-search .search-bar:focus-within {
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .secondary-search .search-bar i {
+            color: var(--text-secondary);
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .secondary-search .search-bar input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .secondary-search .search-bar input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .secondary-search .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .secondary-search .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 2px solid var(--background);
+            background: var(--background);
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .secondary-search .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .secondary-search .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .secondary-search {
+                padding: 1.5rem;
+            }
+
+            .secondary-search .filter-buttons {
+                gap: 0.3rem;
+            }
+
+            .secondary-search .filter-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            color: white;
+            overflow: hidden;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .mentor-card:hover .mentor-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nav buttons styles */
+        .nav-buttons {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-button i {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                top: 12px;
+                right: 12px;
+            }
+
+            .nav-button {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <a href="../../index.html" class="nav-button">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+    </div>
+
+    <main class="mentors-page">
+        <div class="container">
+            <div class="page-title">
+                <h1>Meet Our Expert Mentors</h1>
+                <p>Learn from industry veterans who have been there and done that. Get guidance to transform your startup journey.</p>
+            </div>
+
+            <div class="secondary-search">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search mentors by expertise, industry, or experience...">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Mentors</button>
+                        <button class="filter-btn" data-filter="startup">Startup</button>
+                        <button class="filter-btn" data-filter="tech">Technology</button>
+                        <button class="filter-btn" data-filter="business">Business</button>
+                        <button class="filter-btn" data-filter="marketing">Marketing</button>
+                        <button class="filter-btn" data-filter="finance">Finance</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mentors" class="mentor-cards">
+                <!-- Mentor 1 -->
+                <div class="mentor-card" data-aos="fade-up">
+                    <div class="card-banner">
+                        <div class="mentor-image">
+                            <img src="../assets/images/mentors/mentor1.jpg" alt="John Smith">
+                        </div>
+                        <h3>John Smith</h3>
+                        <p class="mentor-role">Startup Strategy Expert</p>
+                    </div>
+                    <div class="mentor-info">
+                        <p class="mentor-bio">Former CEO of TechCorp with 15+ years of experience in scaling startups.</p>
+                        <div class="expertise-tags">
+                            <span class="expertise-tag">Business Strategy</span>
+                            <span class="expertise-tag">Growth Hacking</span>
+                            <span class="expertise-tag">Leadership</span>
+                        </div>
+                        <div class="mentor-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <div class="schedule-meeting">
+                            <button class="schedule-btn" onclick="openMeetingModal('John Smith')">
+                                <i class="fas fa-calendar-alt"></i>
+                                Schedule Meeting
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="mentor-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-banner">
+                        <div class="mentor-image">
+                            <img src="../assets/images/mentors/mentor2.jpg" alt="Sarah Johnson">
+                        </div>
+                        <h3>Sarah Johnson</h3>
+                        <p class="mentor-role">Product Development Lead</p>
+                    </div>
+                    <div class="mentor-info">
+                        <p class="mentor-bio">Product Lead at InnovateTech, specializing in MVP development and product strategy.</p>
+                        <div class="expertise-tags">
+                            <span class="expertise-tag">Product Management</span>
+                            <span class="expertise-tag">UX Design</span>
+                            <span class="expertise-tag">Agile</span>
+                        </div>
+                        <div class="mentor-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <div class="schedule-meeting">
+                            <button class="schedule-btn" onclick="openMeetingModal('Sarah Johnson')">
+                                <i class="fas fa-calendar-alt"></i>
+                                Schedule Meeting
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 3 -->
+                <div class="mentor-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-banner">
+                        <div class="mentor-image">
+                            <img src="../assets/images/mentors/mentor3.jpg" alt="Michael Chen">
+                        </div>
+                        <h3>Michael Chen</h3>
+                        <p class="mentor-role">Tech Innovation Specialist</p>
+                    </div>
+                    <div class="mentor-info">
+                        <p class="mentor-bio">CTO of FutureTech, expert in emerging technologies and digital transformation.</p>
+                        <div class="expertise-tags">
+                            <span class="expertise-tag">AI/ML</span>
+                            <span class="expertise-tag">Cloud Computing</span>
+                            <span class="expertise-tag">Blockchain</span>
+                        </div>
+                        <div class="mentor-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <div class="schedule-meeting">
+                            <button class="schedule-btn" onclick="openMeetingModal('Michael Chen')">
+                                <i class="fas fa-calendar-alt"></i>
+                                Schedule Meeting
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meeting Modal -->
+            <div class="meeting-modal" id="meetingModal">
+                <div class="modal-content">
+                    <button class="modal-close" onclick="closeMeetingModal()">&times;</button>
+                    <h3 class="modal-title">Schedule a Meeting</h3>
+                    <p>Select a time slot to meet with <span id="mentorName"></span></p>
+                    <div class="time-slots">
+                        <div class="time-slot" onclick="selectTimeSlot(this)">9:00 AM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">10:00 AM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">11:00 AM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">2:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">3:00 PM</div>
+                        <div class="time-slot" onclick="selectTimeSlot(this)">4:00 PM</div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="modal-btn primary" onclick="confirmMeeting()">Confirm</button>
+                        <button class="modal-btn secondary" onclick="closeMeetingModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <?php include '../components/footer.html'; ?>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+    <script src="../js/theme.js"></script>
+    <script>
+        // Meeting scheduling functionality
+        function openMeetingModal(mentorName) {
+            document.getElementById('mentorName').textContent = mentorName;
+            document.getElementById('meetingModal').classList.add('active');
+        }
+
+        function closeMeetingModal() {
+            document.getElementById('meetingModal').classList.remove('active');
+            // Reset selected time slot
+            const selectedSlot = document.querySelector('.time-slot.selected');
+            if (selectedSlot) {
+                selectedSlot.classList.remove('selected');
+            }
+        }
+
+        function selectTimeSlot(element) {
+            // Remove selection from other slots
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            // Add selection to clicked slot
+            element.classList.add('selected');
+        }
+
+        function confirmMeeting() {
+            const selectedSlot = document.querySelector('.time-slot.selected');
+            if (selectedSlot) {
+                const mentorName = document.getElementById('mentorName').textContent;
+                const time = selectedSlot.textContent;
+                alert(`Meeting scheduled with ${mentorName} at ${time}`);
+                closeMeetingModal();
+            } else {
+                alert('Please select a time slot');
+            }
+        }
+
+        // Search and filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-bar input');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const mentorCards = document.querySelectorAll('.mentor-card');
+
+            // Search functionality
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                mentorCards.forEach(card => {
+                    const cardText = card.textContent.toLowerCase();
+                    if (cardText.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    // Implement filter logic here
+                    // For now, we'll just show all cards
+                    mentorCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                });
+            });
+        });
+    </script>
+    <script>
+        // Check login status and update buttons
+        function updateAuthButtons() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginBtn = document.querySelector('.login-btn');
+            const signupBtn = document.querySelector('.signup-btn');
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            
+            if (isLoggedIn) {
+                loginBtn.style.display = 'none';
+                signupBtn.style.display = 'none';
+                profileDropdown.style.display = 'block';
+            } else {
+                loginBtn.style.display = 'inline-flex';
+                signupBtn.style.display = 'inline-flex';
+                profileDropdown.style.display = 'none';
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            localStorage.removeItem('hasSubscription');
+            window.location.href = 'login.html';
+        }
+
+        // Update auth buttons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthButtons();
+        });
+
+        // Listen for storage changes (login/logout in other tabs)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'isLoggedIn') {
+                updateAuthButtons();
+            }
+        });
+    </script>
+</body>
+</html> 

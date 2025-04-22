@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStars Bangalore - Plan for Money</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../../public/images/favicon.png">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #5A54D9;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --background: #F8F9FA;
+        }
+
+        .incubator-detail {
+            padding: 80px 0;
+            background: var(--background);
+        }
+
+        .incubator-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .incubator-header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--background);
+            transform: skewY(-3deg);
+        }
+
+        .incubator-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .incubator-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .incubator-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .incubator-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: var(--background);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .program-details {
+            margin: 60px 0;
+        }
+
+        .program-details h2 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .program-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--background);
+            border-radius: 15px;
+        }
+
+        .program-section h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.1);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .service-card h4 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .incubator-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .incubator-header h1 {
+                font-size: 2rem;
+            }
+
+            .incubator-content {
+                padding: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 0.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .program-section {
+                padding: 20px;
+            }
+        }
+
+        .program-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .program-section li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .program-section li::before {
+            content: '•';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 60px;
+            background: var(--background);
+            border-radius: 20px;
+        }
+
+        .cta-section h2 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
+        }
+
+        /* Add these new styles for the logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .navbar .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .navbar .logo span {
+            color: var(--primary);
+        }
+
+        .incubator-actions {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .apply-now-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .apply-now-btn[data-tooltip] {
+            position: relative;
+            overflow: visible;
+        }
+
+        .apply-now-btn[data-tooltip]::before {
+            pointer-events: none;
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: normal;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            width: max-content;
+            max-width: 200px;
+            text-align: center;
+            line-height: 1.4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .apply-now-btn[data-tooltip]:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .apply-now-btn[data-tooltip]::after {
+            pointer-events: none;
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 4px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .apply-now-btn[data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .apply-now-btn.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../../../public/images/favicon.png" alt="Plan for Money">
+                <h1>Plan <span>For</span> <span>Money</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="../../../index.html">Home</a>
+                <a href="../mentors.html">Mentors</a>
+                <a href="../msmes.html">MSME's</a>
+                <a href="../incubators.html">Incubators</a>
+                <a href="../education.html">Education</a>
+                <a href="../login.html">Login</a>
+                <a href="../signup.html" class="cta-button">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="incubator-header">
+        <div class="container">
+            <h1>TechStars Bangalore</h1>
+            <p class="subtitle">Premier startup accelerator focused on technology innovation and entrepreneurship</p>
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(128 reviews)</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="incubator-detail">
+        <div class="container">
+            <div class="incubator-content">
+                <div class="incubator-stats">
+                    <div class="stat-card">
+                        <h3>150+</h3>
+                        <p>Startups Supported</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>$5M</h3>
+                        <p>Average Funding</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>85%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                </div>
+
+                <div class="program-details">
+                    <h2>Program Overview</h2>
+                    <p>TechStars Bangalore is a world-class accelerator program that helps entrepreneurs build great companies. We provide funding, mentorship, and access to a global network of investors and corporate partners.</p>
+
+                    <div class="program-section">
+                        <h3>Our Services</h3>
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <i class="fas fa-user-friends"></i>
+                                <h4>Mentorship</h4>
+                                <p>One-on-one guidance from industry experts to help navigate your startup journey.</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Business Development</h4>
+                                <p>Access to a network of potential customers and partners to grow your business.</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-laptop-code"></i>
+                                <h4>Technical Support</h4>
+                                <p>Resources and expertise to refine your products and ensure market readiness.</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <h4>Funding Access</h4>
+                                <p>Opportunities for direct investment and connections to potential investors.</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-building"></i>
+                                <h4>Workspace</h4>
+                                <p>Modern coworking space with high-speed internet, meeting rooms, and collaboration areas.</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-handshake"></i>
+                                <h4>VC Network</h4>
+                                <p>Direct connections to leading venture capital firms and investment opportunities.</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-users"></i>
+                                <h4>Angel Network</h4>
+                                <p>Access to a curated network of angel investors interested in early-stage startups.</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h4>Startup School</h4>
+                                <p>Structured learning programs and workshops to enhance entrepreneurial skills.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-section">
+                        <h3>Program Benefits</h3>
+                        <ul>
+                            <li>$120,000 investment in exchange for 6% equity</li>
+                            <li>Access to TechStars' global network of mentors and investors</li>
+                            <li>Workspace in Bangalore's tech hub</li>
+                            <li>Demo Day presentation to investors</li>
+                            <li>Lifetime access to TechStars resources</li>
+                        </ul>
+                    </div>
+
+                    <div class="program-section">
+                        <h3>Eligibility Criteria</h3>
+                        <ul>
+                            <li>SaaS and Enterprise Software: B2B solutions, cloud platforms, AI/ML applications</li>
+                            <li>IoT and Hardware: Smart devices, industrial IoT, connected solutions</li>
+                            <li>Product Innovation: Consumer tech, marketplace platforms, mobile applications</li>
+                            <li>Deep Tech: Blockchain, quantum computing, robotics</li>
+                            <li>Minimum Viable Product (MVP) with early customer validation</li>
+                            <li>Founding team with technical expertise and business acumen</li>
+                            <li>Intellectual property or unique technological advantage</li>
+                        </ul>
+                    </div>
+
+                    <div class="program-section">
+                        <h3>Program Timeline</h3>
+                        <ul>
+                            <li>Application Period: January - March</li>
+                            <li>Interviews: April</li>
+                            <li>Program Start: June</li>
+                            <li>Demo Day: September</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h2>Ready to Accelerate Your Startup?</h2>
+                    <p>Join the next cohort of TechStars Bangalore and take your startup to the next level.</p>
+                    <div class="incubator-actions">
+                        <a href="#" class="apply-now-btn disabled" data-tooltip="Please login to apply for incubation">
+                            <i class="fas fa-arrow-right"></i>
+                            Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Plan for Money is your trusted platform connecting innovative startups with leading incubators worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: contact@planformoney.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Plan for Money. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyButton = document.querySelector('.apply-now-btn');
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const hasSubscription = localStorage.getItem('hasSubscription') === 'true';
+
+            if (!isLoggedIn) {
+                applyButton.classList.add('disabled');
+                applyButton.setAttribute('data-tooltip', 'Please login to apply for incubation');
+                applyButton.addEventListener('click', function() {
+                    localStorage.setItem('redirectAfterLogin', window.location.href);
+                    window.location.href = '../../login.html';
+                });
+            } else if (!hasSubscription) {
+                applyButton.classList.add('disabled');
+                applyButton.setAttribute('data-tooltip', 'Subscribe to a plan to apply for incubation');
+                applyButton.addEventListener('click', function() {
+                    window.location.href = '../../pricing.html';
+                });
+            } else {
+                applyButton.classList.remove('disabled');
+                applyButton.removeAttribute('data-tooltip');
+                applyButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Handle the actual application process
+                    window.location.href = `../../apply.html?incubator=TechStars`;
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

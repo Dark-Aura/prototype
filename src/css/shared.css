@@ -1,0 +1,41 @@
+/* Brand Colors and Variables */
+:root {
+    --primary: #6366f1;
+    --secondary: #f59e0b;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --background: #ffffff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* Shared Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.logo h1 span:first-child {
+    color: var(--primary);
+}
+
+.logo h1 span:last-child {
+    color: var(--secondary);
+}
+
+/* Shared Button Styles */
+.cta-button {
+    background: var(--gradient);
+    color: white;
+    padding: 12 

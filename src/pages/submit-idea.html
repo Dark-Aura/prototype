@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Idea - Plan for Money</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --brand-blue: #0066CC;
+            --brand-green: #2EAE60;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --bg-light: #f8f9fa;
+            --error-color: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
+
+        .navbar {
+            background: white;
+            padding: 16px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .navbar .logo a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar .logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .navbar .logo span {
+            color: var(--brand-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        .submission-page {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .submission-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .submission-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .submission-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .submission-form {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-section h2 i {
+            color: var(--brand-blue);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-group .help-text {
+            margin-top: 6px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group.required label::after {
+            content: "*";
+            color: var(--error-color);
+            margin-left: 4px;
+        }
+
+        .file-upload {
+            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--brand-blue);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--brand-blue);
+            margin-bottom: 10px;
+        }
+
+        .file-upload p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--brand-green);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 6px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .submission-header h1 {
+                font-size: 2rem;
+            }
+
+            .submission-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">
+                    <img src="../../public/images/favicon.png" alt="Plan for Money">
+                    <h1>Plan <span>For</span> <span>Money</span></h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="blog.html">Blog</a>
+                <a href="mentors.html">Mentors</a>
+                <a href="msmes.html">MSME's</a>
+                <a href="incubators.html">Incubators</a>
+                <a href="education.html">Education</a>
+                <a href="login.html">Login</a>
+                <a href="signup.html" class="cta-button">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="submission-page">
+        <div class="container">
+            <div class="submission-header">
+                <h1>Submit Your Innovative Idea</h1>
+                <p>Share your vision with leading companies and get a chance to partner or receive rewards for your innovation.</p>
+            </div>
+
+            <form class="submission-form" id="ideaSubmissionForm">
+                <div class="form-section">
+                    <h2><i class="fas fa-building"></i>Company Selection</h2>
+                    <div class="form-group required">
+                        <label for="company">Select Target Company</label>
+                        <select id="company" name="company" required>
+                            <option value="">Choose a company</option>
+                            <option value="tvs">TVS Motors</option>
+                            <option value="zoho">Zoho Corporation</option>
+                            <option value="apollo">Apollo Hospitals</option>
+                            <option value="tcs">Tata Consultancy Services</option>
+                            <option value="reliance">Reliance Industries</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-user"></i>Personal Information</h2>
+                    <div class="form-group required">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group required">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-lightbulb"></i>Idea Details</h2>
+                    <div class="form-group required">
+                        <label for="ideaTitle">Idea Title</label>
+                        <input type="text" id="ideaTitle" name="ideaTitle" required>
+                        <div class="help-text">Keep it clear and concise</div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="ideaDescription">Detailed Description</label>
+                        <textarea id="ideaDescription" name="ideaDescription" rows="5" required></textarea>
+                        <div class="help-text">Describe your idea's purpose, functionality, and potential impact</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-cogs"></i>Technical Details</h2>
+                    <div class="form-group required">
+                        <label for="technicalDetails">Technical Specifications</label>
+                        <textarea id="technicalDetails" name="technicalDetails" rows="5" required></textarea>
+                        <div class="help-text">Include architecture, implementation details, and technology stack</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-chart-line"></i>Market Analysis</h2>
+                    <div class="form-group required">
+                        <label for="marketAnalysis">Market Potential</label>
+                        <textarea id="marketAnalysis" name="marketAnalysis" rows="5" required></textarea>
+                        <div class="help-text">Describe target market, competition, and potential market size</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-tasks"></i>Implementation</h2>
+                    <div class="form-group required">
+                        <label for="implementationPlan">Implementation Plan</label>
+                        <textarea id="implementationPlan" name="implementationPlan" rows="5" required></textarea>
+                        <div class="help-text">Outline timeline, resources needed, and key milestones</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-file-alt"></i>Supporting Documents</h2>
+                    <div class="form-group">
+                        <label for="attachments">Upload Documents</label>
+                        <div class="file-upload" onclick="document.getElementById('attachments').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload or drag and drop</p>
+                            <p class="help-text">Supported formats: PDF, DOC, DOCX, PPT, PPTX (Max 10MB each)</p>
+                        </div>
+                        <input type="file" id="attachments" name="attachments" multiple accept=".pdf,.doc,.docx,.ppt,.pptx" style="display: none">
+                        <div id="fileList" class="help-text"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Idea</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Check login status when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // For demo purposes, we'll use localStorage to check login status
+            // In a real application, this would be handled by your backend
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            if (!isLoggedIn) {
+                // Store the current URL to redirect back after login
+                localStorage.setItem('redirectAfterLogin', window.location.href);
+                // Redirect to login page
+                window.location.href = 'login.html';
+            }
+        });
+
+        // File upload handling
+        const attachments = document.getElementById('attachments');
+        const fileList = document.getElementById('fileList');
+
+        attachments.addEventListener('change', function(e) {
+            fileList.innerHTML = '';
+            for(let file of this.files) {
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                fileList.innerHTML += `<div>${file.name} (${fileSize}MB)</div>`;
+            }
+        });
+
+        // Form submission
+        const form = document.getElementById('ideaSubmissionForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the data to your backend
+            // For now, we'll just show a success message
+            alert('Thank you for submitting your idea! Our team will review it and get back to you soon.');
+            form.reset();
+            fileList.innerHTML = '';
+        });
+
+        // Drag and drop functionality
+        const fileUpload = document.querySelector('.file-upload');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            fileUpload.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileUpload.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileUpload.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            fileUpload.classList.add('highlight');
+        }
+
+        function unhighlight(e) {
+            fileUpload.classList.remove('highlight');
+        }
+
+        fileUpload.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            attachments.files = files;
+            
+            // Trigger the change event manually
+            const event = new Event('change');
+            attachments.dispatchEvent(event);
+        }
+    </script>
+</body>
+</html> 

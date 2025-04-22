@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Plan for Money</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --brand-blue: #0066CC;
+            --brand-green: #2EAE60;
+            --text-primary: #2D3436;
+            --text-secondary: #4a5568;
+            --bg-light: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --navbar-height: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: var(--brand-green);
+        }
+
+        .home-button i {
+            font-size: 16px;
+        }
+
+        .education-page {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            color: white;
+            overflow: hidden;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-tagline {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-tagline::before,
+        .hero-tagline::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 50px;
+            background: rgba(255, 255, 255, 0.5);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hero-tagline::before {
+            right: calc(100% + 20px);
+        }
+
+        .hero-tagline::after {
+            left: calc(100% + 20px);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .education-hero {
+            background: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .education-hero h1 {
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .education-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .live-programs {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .free-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+            transform: translateY(-2px);
+            z-index: 1;
+        }
+
+        .program-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-info {
+            flex: 1;
+        }
+
+        .program-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .program-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .meta-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .session-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .session-item:last-child {
+            border-bottom: none;
+        }
+
+        .session-language {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .session-time {
+            color: var(--text-secondary);
+        }
+
+        .program-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .highlight-item i {
+            color: var(--brand-green);
+        }
+
+        .apply-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--brand-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background: var(--brand-green);
+            transform: translateY(-2px);
+        }
+
+        .application-form {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+        }
+
+        .submit-btn {
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--brand-green);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: white;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-column p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.5;
+        }
+
+        .footer-column ul li i {
+            width: 16px;
+            margin-right: 0;
+            color: var(--brand-blue);
+            margin-top: 4px;
+        }
+
+        .footer-column ul li span {
+            flex: 1;
+        }
+
+        .footer-column.contact-info ul li {
+            color: var(--text-secondary);
+        }
+
+        .footer-column.contact-info a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column.contact-info a:hover {
+            color: var(--brand-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            color: var(--brand-blue);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .footer-bottom-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        .footer-bottom-links span {
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-column:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .footer-column:first-child {
+                grid-column: 1 / -1;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+            .hero-tagline::before,
+            .hero-tagline::after {
+                width: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .footer-bottom-links span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../../index.html" class="home-button">
+        <i class="fas fa-home"></i> Home
+    </a>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Transform Your Future Through Education</h1>
+            <div class="hero-tagline">"Knowledge is the Currency of Tomorrow"</div>
+            <p class="hero-description">
+                Join our comprehensive educational programs designed to empower entrepreneurs 
+                and business leaders with cutting-edge skills and insights.
+            </p>
+        </div>
+    </section>
+
+    <section id="programs" class="live-programs">
+        <div class="container">
+            <div class="program-card">
+                <div class="free-tag">FREE</div>
+                <div class="program-header">
+                    <div class="program-info">
+                        <h2 class="program-title">Startup Accelerator Program</h2>
+                        <div class="program-meta">
+                            <div class="meta-title">NEXT SESSIONS</div>
+                            <div class="session-item">
+                                <span class="session-language">Tamil</span>
+                                <span class="session-time">22 Apr, 11:00 AM</span>
+                            </div>
+                            <div class="session-item">
+                                <span class="session-language">English</span>
+                                <span class="session-time">22 Apr, 4:30 PM</span>
+                            </div>
+                        </div>
+                        <p class="program-description">
+                            An intensive 8-week program designed to help early-stage startups validate their business model, 
+                            refine their product strategy, and prepare for scaling. Learn directly from successful entrepreneurs 
+                            and industry experts.
+                        </p>
+                        <div class="program-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Live Interactive Sessions</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>1-on-1 Mentoring</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Networking Opportunities</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Real Project Work</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="apply-btn" onclick="toggleForm('form1')">Apply Now</button>
+                <div id="form1" class="application-form">
+                    <form onsubmit="event.preventDefault(); submitForm(1);">
+                        <div class="form-group">
+                            <label for="name1">Full Name</label>
+                            <input type="text" id="name1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email1">Email Address</label>
+                            <input type="email" id="email1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone1">Phone Number</label>
+                            <input type="tel" id="phone1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company1">Company/Startup Name</label>
+                            <input type="text" id="company1">
+                        </div>
+                        <div class="form-group">
+                            <label for="stage1">Startup Stage</label>
+                            <select id="stage1" required>
+                                <option value="">Select Stage</option>
+                                <option value="idea">Idea Stage</option>
+                                <option value="mvp">MVP Stage</option>
+                                <option value="early">Early Traction</option>
+                                <option value="growth">Growth Stage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience1">Brief description of your startup/business idea</label>
+                            <textarea id="experience1" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <div class="free-tag">FREE</div>
+                <div class="program-header">
+                    <div class="program-info">
+                        <h2 class="program-title">MSME Digital Transformation</h2>
+                        <div class="program-meta">
+                            <div class="meta-title">NEXT SESSIONS</div>
+                            <div class="session-item">
+                                <span class="session-language">Tamil</span>
+                                <span class="session-time">25 Apr, 11:00 AM</span>
+                            </div>
+                            <div class="session-item">
+                                <span class="session-language">English</span>
+                                <span class="session-time">25 Apr, 4:30 PM</span>
+                            </div>
+                        </div>
+                        <p class="program-description">
+                            Learn how to digitally transform your MSME business through technology adoption, process automation, 
+                            and modern business strategies. Perfect for traditional businesses looking to modernize their operations.
+                        </p>
+                        <div class="program-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Digital Tools Training</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Process Optimization</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Marketing Strategies</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Implementation Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="apply-btn" onclick="toggleForm('form2')">Apply Now</button>
+                <div id="form2" class="application-form">
+                    <form onsubmit="event.preventDefault(); submitForm(2);">
+                        <div class="form-group">
+                            <label for="name2">Full Name</label>
+                            <input type="text" id="name2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email2">Email Address</label>
+                            <input type="email" id="email2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone2">Phone Number</label>
+                            <input type="tel" id="phone2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business2">Business Name</label>
+                            <input type="text" id="business2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type2">Business Type</label>
+                            <select id="type2" required>
+                                <option value="">Select Type</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="retail">Retail</option>
+                                <option value="services">Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="challenges2">Current Business Challenges</label>
+                            <textarea id="challenges2" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <div class="free-tag">FREE</div>
+                <div class="program-header">
+                    <div class="program-info">
+                        <h2 class="program-title">Financial Management Masterclass</h2>
+                        <div class="program-meta">
+                            <div class="meta-title">NEXT SESSIONS</div>
+                            <div class="session-item">
+                                <span class="session-language">Tamil</span>
+                                <span class="session-time">28 Apr, 11:00 AM</span>
+                            </div>
+                            <div class="session-item">
+                                <span class="session-language">English</span>
+                                <span class="session-time">28 Apr, 4:30 PM</span>
+                            </div>
+                        </div>
+                        <p class="program-description">
+                            Master the essentials of financial management for startups and small businesses. Learn about 
+                            fundraising, cash flow management, financial planning, and investment strategies.
+                        </p>
+                        <div class="program-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Financial Planning</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Investment Strategies</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Risk Management</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Funding Guidance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="apply-btn" onclick="toggleForm('form3')">Apply Now</button>
+                <div id="form3" class="application-form">
+                    <form onsubmit="event.preventDefault(); submitForm(3);">
+                        <div class="form-group">
+                            <label for="name3">Full Name</label>
+                            <input type="text" id="name3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email3">Email Address</label>
+                            <input type="email" id="email3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone3">Phone Number</label>
+                            <input type="tel" id="phone3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role3">Current Role</label>
+                            <input type="text" id="role3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience3">Years of Experience</label>
+                            <select id="experience3" required>
+                                <option value="">Select Experience</option>
+                                <option value="0-2">0-2 years</option>
+                                <option value="3-5">3-5 years</option>
+                                <option value="5-10">5-10 years</option>
+                                <option value="10+">10+ years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="goals3">Learning Goals</label>
+                            <textarea id="goals3" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleForm(formId) {
+            const form = document.getElementById(formId);
+            const allForms = document.querySelectorAll('.application-form');
+            
+            // Hide all other forms
+            allForms.forEach(f => {
+                if (f.id !== formId) {
+                    f.style.display = 'none';
+                }
+            });
+
+            // Toggle the clicked form
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function submitForm(formNumber) {
+            alert('Thank you for your application! We will contact you soon.');
+            document.getElementById('form' + formNumber).style.display = 'none';
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Plan For Money</h3>
+                    <p>Empowering startups to achieve their full potential through expert guidance and support.</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/company/planformoney" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/planformoney" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://facebook.com/planformoney" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/planformoney" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/planformoney" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="mentors.html">Mentors</a></li>
+                        <li><a href="msmes.html">MSME's</a></li>
+                        <li><a href="incubators.html">Incubators</a></li>
+                        <li><a href="education.html">Education</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column contact-info">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:contact@planformoney.com">contact@planformoney.com</a></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>45 Five Roads<br>Salem, Tamil Nadu 636005</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Plan for Money. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Accessibility</a>
+                    <span>•</span>
+                    <a href="#">Sitemap</a>
+                    <span>•</span>
+                    <a href="#">Responsible Disclosure</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

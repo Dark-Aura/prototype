@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incubators - Plan for Money</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../public/images/favicon.png">
+    <style>
+        :root {
+            --brand-blue: #0066CC;
+            --brand-green: #2EAE60;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --bg-light: #f8f9fa;
+            --reward-color: #F6B93B;
+            --partnership-color: #6C5CE7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            color: white;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .hero-tagline {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .hero-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero-btn i {
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .secondary-search {
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8f9fa;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .search-bar i {
+            color: #666666;
+            font-size: 1rem;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .search-bar input::placeholder {
+            color: #999999;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 6px;
+            background: #f8f9fa;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: #e9ecef;
+        }
+
+        .filter-btn.active {
+            background: var(--brand-blue);
+            color: white;
+            border-color: var(--brand-blue);
+        }
+
+        .incubators-page {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 0 auto 40px;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 16px;
+            max-width: 1200px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            width: 100%;
+        }
+
+        .page-title h1 {
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .page-title p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .incubator-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .incubator-card {
+            position: relative;
+            overflow: visible;
+            z-index: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .incubator-card:hover {
+            z-index: 2;
+        }
+
+        .incubator-logo {
+            width: 48px;
+            height: 48px;
+            background: #6C63FF;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            font-size: 1.125rem;
+            margin-bottom: 12px;
+        }
+
+        .card-banner {
+            background: none;
+            padding: 0;
+            height: auto;
+            border: none;
+        }
+
+        .card-banner h3 {
+            color: #1A1A1A;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .incubator-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .stars {
+            color: #FFB800;
+            letter-spacing: 1px;
+            font-size: 1.125rem;
+        }
+
+        .rating-count {
+            color: #666666;
+            font-size: 0.875rem;
+        }
+
+        .card-content {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .incubator-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666666;
+            font-size: 0.875rem;
+        }
+
+        .incubator-location i {
+            color: #666666;
+            font-size: 1rem;
+        }
+
+        .incubator-description {
+            color: #666666;
+            line-height: 1.5;
+            font-size: 0.875rem;
+            margin: 0;
+            min-height: auto;
+        }
+
+        .incubator-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            background: #F8F8FF;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 8px 0;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat strong {
+            display: block;
+            color: #6C63FF;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .stat span {
+            color: #666666;
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+
+        .learn-more {
+            background: #6C63FF;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .learn-more.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .learn-more:not(.disabled):hover {
+            background: #5A54D9;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .incubator-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .incubators-page {
+                padding-top: 80px;
+                padding-bottom: 20px;
+            }
+
+            .incubator-cards {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
+
+            .secondary-search {
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+
+            .search-container {
+                gap: 12px;
+            }
+
+            .filter-buttons {
+                gap: 6px;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.8125rem;
+            }
+
+            .page-title {
+                padding: 32px 16px;
+                margin-bottom: 24px;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .page-title p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                top: 15px;
+                right: 15px;
+                gap: 8px;
+            }
+
+            .hero-btn {
+                padding: 6px 12px;
+                font-size: 0.8125rem;
+            }
+        }
+
+        .submit-idea-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .submit-idea-btn.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .submit-idea-btn:not(.disabled):hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .apply-now-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            cursor: pointer;
+            margin-top: auto;
+            overflow: visible !important;
+            z-index: 2;
+        }
+
+        .apply-now-btn[data-tooltip] {
+            position: relative;
+            overflow: visible;
+        }
+
+        .apply-now-btn[data-tooltip]::before {
+            pointer-events: none;
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: normal;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            width: max-content;
+            max-width: 200px;
+            text-align: center;
+            line-height: 1.4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .apply-now-btn[data-tooltip]:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .apply-now-btn[data-tooltip]::after {
+            pointer-events: none;
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 4px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .apply-now-btn[data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .apply-now-btn.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            background: var(--brand-green);
+            transform: translateY(-2px);
+        }
+
+        /* Add nav-buttons styles */
+        .nav-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-button i {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                top: 12px;
+                right: 12px;
+            }
+
+            .nav-button {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <a href="../../index.html" class="nav-button">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+    </div>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Startup Incubation Hub</h1>
+                <div class="hero-tagline">You Dream It. We Help Build It.</div>
+                <p class="hero-description">Connect with leading incubators that provide the resources, mentorship, and ecosystem you need to transform your innovative ideas into successful ventures.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="incubators-page">
+        <div class="container">
+            <div class="page-title" data-aos="fade-up">
+                <h1>Featured Incubators</h1>
+                <p>Connect with leading startup incubators and accelerate your entrepreneurial journey</p>
+            </div>
+
+            <div class="secondary-search">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search by specific criteria...">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">All Incubators</button>
+                        <button class="filter-btn">Tech Focus</button>
+                        <button class="filter-btn">Health Focus</button>
+                        <button class="filter-btn">FinTech Focus</button>
+                        <button class="filter-btn">Early Stage</button>
+                        <button class="filter-btn">Growth Stage</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="incubator-cards">
+                <!-- TechStars Card -->
+                <div class="incubator-card" data-aos="fade-up">
+                    <div class="incubator-logo">TS</div>
+                    <div>
+                        <h3>TechStars Bangalore</h3>
+                        <div class="incubator-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-count">(128)</span>
+                        </div>
+                    </div>
+                    <div class="incubator-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Bangalore, India
+                    </div>
+                    <p class="incubator-description">
+                        Premier startup accelerator focused on technology innovation and entrepreneurship.
+                    </p>
+                    <div class="incubator-stats">
+                        <div class="stat">
+                            <strong>150+</strong>
+                            <span>Startups</span>
+                        </div>
+                        <div class="stat">
+                            <strong>$5M</strong>
+                            <span>Avg Funding</span>
+                        </div>
+                        <div class="stat">
+                            <strong>85%</strong>
+                            <span>Success Rate</span>
+                        </div>
+                    </div>
+                    <a href="incubators/tech-stars.html" class="cta-button">View Details</a>
+                </div>
+
+                <!-- HealthTech Card -->
+                <div class="incubator-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="incubator-logo">HT</div>
+                    <div>
+                        <h3>HealthTech Hub</h3>
+                        <div class="incubator-rating">
+                            <div class="stars">★★★★</div>
+                            <span class="rating-count">(89)</span>
+                        </div>
+                    </div>
+                    <div class="incubator-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Mumbai, India
+                    </div>
+                    <p class="incubator-description">
+                        Specialized healthcare innovation incubator supporting medical technology startups.
+                    </p>
+                    <div class="incubator-stats">
+                        <div class="stat">
+                            <strong>75+</strong>
+                            <span>Startups</span>
+                        </div>
+                        <div class="stat">
+                            <strong>$3M</strong>
+                            <span>Avg Funding</span>
+                        </div>
+                        <div class="stat">
+                            <strong>92%</strong>
+                            <span>Success Rate</span>
+                        </div>
+                    </div>
+                    <a href="incubators/health-tech.html" class="cta-button">View Details</a>
+                </div>
+
+                <!-- FinTech Card -->
+                <div class="incubator-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="incubator-logo">FF</div>
+                    <div>
+                        <h3>FinTech Factory</h3>
+                        <div class="incubator-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                    </div>
+                    <div class="incubator-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Chennai, India
+                    </div>
+                    <p class="incubator-description">
+                        Leading fintech incubator supporting innovative financial technology solutions.
+                    </p>
+                    <div class="incubator-stats">
+                        <div class="stat">
+                            <strong>200+</strong>
+                            <span>Startups</span>
+                        </div>
+                        <div class="stat">
+                            <strong>$8M</strong>
+                            <span>Avg Funding</span>
+                        </div>
+                        <div class="stat">
+                            <strong>88%</strong>
+                            <span>Success Rate</span>
+                        </div>
+                    </div>
+                    <a href="incubators/fintech-factory.html" class="cta-button">View Details</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <?php include '../components/footer.html'; ?>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS with enhanced settings
+        AOS.init({
+            duration: 600,
+            once: true,
+            offset: 50,
+            easing: 'ease-out'
+        });
+
+        // Load the navbar
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
+        // Check login status and update button states
+        function updateButtonStates() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const applyButtons = document.querySelectorAll('.apply-now-btn');
+            
+            applyButtons.forEach(button => {
+                if (!isLoggedIn) {
+                    button.classList.add('disabled');
+                    button.setAttribute('title', 'Please log in to apply');
+                } else {
+                    button.classList.remove('disabled');
+                    button.removeAttribute('title');
+                }
+            });
+        }
+
+        // Check login status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateButtonStates();
+        });
+
+        // Update button states when login status changes
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'isLoggedIn') {
+                updateButtonStates();
+            }
+        });
+    </script>
+    <script src="../js/theme.js"></script>
+    <script>
+        // Search and filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-bar input');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const incubatorCards = document.querySelectorAll('.incubator-card');
+
+            // Search functionality
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                incubatorCards.forEach(card => {
+                    const cardText = card.textContent.toLowerCase();
+                    if (cardText.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    // Implement filter logic here
+                    // For now, we'll just show all cards
+                    incubatorCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                });
+            });
+        });
+
+        // Secondary search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const secondarySearchInput = document.querySelector('.secondary-search .search-bar input');
+            const secondaryFilterButtons = document.querySelectorAll('.secondary-search .filter-btn');
+            const incubatorCards = document.querySelectorAll('.incubator-card');
+
+            // Secondary search functionality
+            secondarySearchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                incubatorCards.forEach(card => {
+                    const cardText = card.textContent.toLowerCase();
+                    if (cardText.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Secondary filter functionality
+            secondaryFilterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    secondaryFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    incubatorCards.forEach(card => {
+                        const cardType = card.getAttribute('data-type');
+                        if (filter === 'all' || cardType === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // Handle idea submission
+        function handleIdeaSubmission(event) {
+            event.preventDefault();
+            
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const submitButtons = document.querySelectorAll('.submit-idea-btn');
+            
+            submitButtons.forEach(button => {
+                if (!isLoggedIn) {
+                    button.classList.add('disabled');
+                } else {
+                    button.classList.remove('disabled');
+                }
+            });
+            
+            if (!isLoggedIn) {
+                localStorage.setItem('redirectAfterLogin', '/src/pages/submit-idea.html');
+                
+                const toast = document.getElementById('loginToast');
+                toast.style.display = 'block';
+                
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3000);
+                
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            } else {
+                window.location.href = '/src/pages/submit-idea.html';
+            }
+        }
+
+        // Check login status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const submitButtons = document.querySelectorAll('.submit-idea-btn');
+            
+            submitButtons.forEach(button => {
+                if (!isLoggedIn) {
+                    button.classList.add('disabled');
+                }
+            });
+        });
+
+        // Check login status and set tooltip
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyButtons = document.querySelectorAll('.apply-now-btn');
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const hasSubscription = localStorage.getItem('hasSubscription') === 'true';
+
+            applyButtons.forEach(button => {
+                if (!isLoggedIn) {
+                    button.classList.add('disabled');
+                    button.setAttribute('data-tooltip', 'Please login to apply for incubation');
+                    button.addEventListener('click', function() {
+                        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                        const hasSubscription = localStorage.getItem('hasSubscription') === 'true';
+                        
+                        if (!isLoggedIn) {
+                            localStorage.setItem('redirectAfterLogin', window.location.href);
+                            window.location.href = 'login.html';
+                        } else if (!hasSubscription) {
+                            window.location.href = 'pricing.html';
+                        }
+                    });
+                } else if (!hasSubscription) {
+                    button.classList.add('disabled');
+                    button.setAttribute('data-tooltip', 'Subscribe to a plan to apply for incubation');
+                    button.addEventListener('click', function() {
+                        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                        const hasSubscription = localStorage.getItem('hasSubscription') === 'true';
+                        
+                        if (!isLoggedIn) {
+                            localStorage.setItem('redirectAfterLogin', window.location.href);
+                            window.location.href = 'login.html';
+                        } else if (!hasSubscription) {
+                            window.location.href = 'pricing.html';
+                        }
+                    });
+                } else {
+                    button.classList.remove('disabled');
+                    button.removeAttribute('data-tooltip');
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Handle the actual application process
+                        const incubatorCard = this.closest('.incubator-card');
+                        const incubatorName = incubatorCard.querySelector('h3').textContent;
+                        window.location.href = `apply.html?incubator=${encodeURIComponent(incubatorName)}`;
+                    });
+                }
+            });
+        });
+
+        // Check login status and update buttons
+        function updateAuthButtons() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginBtn = document.querySelector('.login-btn');
+            const signupBtn = document.querySelector('.signup-btn');
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            
+            if (isLoggedIn) {
+                loginBtn.style.display = 'none';
+                signupBtn.style.display = 'none';
+                profileDropdown.style.display = 'block';
+            } else {
+                loginBtn.style.display = 'inline-flex';
+                signupBtn.style.display = 'inline-flex';
+                profileDropdown.style.display = 'none';
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            localStorage.removeItem('hasSubscription');
+            window.location.href = 'login.html';
+        }
+
+        // Update auth buttons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthButtons();
+        });
+
+        // Listen for storage changes (login/logout in other tabs)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'isLoggedIn') {
+                updateAuthButtons();
+            }
+        });
+    </script>
+</body>
+</html> 

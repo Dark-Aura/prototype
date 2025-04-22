@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Plan for Money</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding-top: 60px; /* Reduced from 80px */
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .logo h1 {
+            color: #2D3436;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-dropdown {
+            position: relative;
+            display: none;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #0066CC;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-icon:hover {
+            background: #2EAE60;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .profile-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            color: #2D3436;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: #0066CC;
+        }
+
+        .dropdown-item i {
+            font-size: 1rem;
+            width: 20px;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2D3436;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0066CC;
+        }
+
+        .nav-links .cta-button {
+            background: #0066CC;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .nav-links .cta-button:hover {
+            background: #2EAE60;
+        }
+
+        .blog-header {
+            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            color: white;
+            padding: 2.5rem 0; /* Significantly reduced from 4rem */
+            text-align: center;
+            margin-bottom: 2rem; /* Reduced from 3rem */
+            position: relative;
+        }
+
+        .blog-header h1 {
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .blog-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px; /* Increased from 600px */
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem; /* Adjusted padding */
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduced from 300px */
+            gap: 1.25rem; /* Further reduced from 1.5rem */
+            padding: 0.5rem 0;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 8px; /* Reduced from 10px */
+            overflow: hidden;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 160px; /* Reduced from 200px */
+            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-image i {
+            font-size: 2.5rem; /* Reduced from 3rem */
+            color: white;
+            opacity: 0.9;
+        }
+
+        .blog-content {
+            padding: 1rem; /* Reduced from 1.25rem */
+        }
+
+        .blog-title {
+            font-size: 1.1rem; /* Reduced from 1.2rem */
+            margin-bottom: 0.5rem;
+            color: #2D3436;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #636E72;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #636E72;
+            font-size: 0.85rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #eee;
+            margin-top: 0.5rem;
+        }
+
+        .blog-meta i {
+            color: #0066CC;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">
+                <img src="../../public/images/favicon.png" alt="Plan for Money">
+                <h1>Plan <span>For</span> <span>Money</span></h1>
+            </a>
+            <div class="nav-links">
+                <a href="blog.html">Blog</a>
+                <a href="mentors.html">Mentors</a>
+                <a href="msmes.html">MSME's</a>
+                <a href="incubators.html">Incubators</a>
+                <a href="education.html">Education</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="cta-button signup-btn">Sign Up</a>
+                <div class="profile-dropdown">
+                    <div class="profile-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="settings.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <h1>Startup & MSME Insights</h1>
+            <p>Discover the latest trends, strategies, and success stories in the startup and MSME ecosystem</p>
+        </div>
+    </header>
+
+    <!-- Blog Content -->
+    <main class="blog-container">
+        <div class="blog-grid">
+            <!-- Blog Card 1 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">How to Start a Startup</h3>
+                    <p class="blog-excerpt">Learn the essential steps to launch your startup and turn your ideas into reality.</p>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar-alt"></i> April 19, 2025
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Scaling Your Business</h3>
+                    <p class="blog-excerpt">Discover strategies to scale your business and achieve sustainable growth.</p>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar-alt"></i> April 18, 2025
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Building a Strong Team</h3>
+                    <p class="blog-excerpt">Learn how to recruit and retain top talent for your startup.</p>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar-alt"></i> April 17, 2025
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load Footer
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Check login status and update buttons
+        function updateAuthButtons() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginBtn = document.querySelector('.login-btn');
+            const signupBtn = document.querySelector('.signup-btn');
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            
+            if (isLoggedIn) {
+                loginBtn.style.display = 'none';
+                signupBtn.style.display = 'none';
+                profileDropdown.style.display = 'block';
+            } else {
+                loginBtn.style.display = 'inline-flex';
+                signupBtn.style.display = 'inline-flex';
+                profileDropdown.style.display = 'none';
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            localStorage.removeItem('hasSubscription');
+            window.location.href = 'login.html';
+        }
+
+        // Update auth buttons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthButtons();
+        });
+
+        // Listen for storage changes (login/logout in other tabs)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'isLoggedIn') {
+                updateAuthButtons();
+            }
+        });
+    </script>
+</body>
+</html>

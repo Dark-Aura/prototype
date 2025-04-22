@@ -1,0 +1,125 @@
+<nav class="navbar">
+    <div class="container">
+        <a href="../../index.html" class="logo">
+            <img src="../assets/images/favicon.png" alt="Plan for Money">
+            <h1>Plan <span>For</span> <span>Money</span></h1>
+        </a>
+        <div class="nav-links">
+            <a href="../pages/blog.html">Blog</a>
+            <a href="../pages/mentors.html">Mentors</a>
+            <a href="../pages/msmes.html">MSME's</a>
+            <a href="../pages/incubators.html">Incubators</a>
+            <a href="../pages/education.html">Education</a>
+            <a href="../pages/pricing.html">Pricing</a>
+            <a href="../pages/login.html" class="cta-button">Login</a>
+        </div>
+    </div>
+</nav>
+
+<style>
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo h1 {
+    color: #2D3436;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.logo span {
+    color: #4834D4;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2D3436;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: var(--brand-blue);
+}
+
+.nav-links .cta-button {
+    background: var(--brand-blue);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.nav-links .cta-button:hover {
+    background: var(--brand-green);
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 0;
+    }
+
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+
+    .logo img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+}
+</style> 

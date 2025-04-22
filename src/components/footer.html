@@ -1,0 +1,180 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Plan For Money</h3>
+                <p>Empowering startups to achieve their full potential through expert guidance and support.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../../index.html#about">About</a></li>
+                    <li><a href="../pages/mentors.html">Mentors</a></li>
+                    <li><a href="../pages/msmes.html">MSME's</a></li>
+                    <li><a href="../pages/incubators.html">Incubators</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="../pages/blog.html">Blog</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="tel:+919876543210"><i class="fas fa-phone"></i>+91 98765 43210</a></li>
+                    <li><a href="mailto:contact@planformoney.com"><i class="fas fa-envelope"></i>contact@planformoney.com</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i>Salem, Tamil Nadu, India 636005</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Plan For Money. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+.footer {
+    background: #fff;
+    padding: 60px 0 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.footer .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-column {
+    min-width: 200px;
+}
+
+.footer-column h3 {
+    color: #0066CC;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-column p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-column ul li a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-column.contact ul li {
+    display: flex;
+    align-items: flex-start;
+    color: #666;
+}
+
+.footer-column.contact ul li i {
+    margin-top: 4px;
+}
+
+.footer-column ul li i {
+    color: #2EAE60;
+    width: 20px;
+    margin-right: 8px;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    color: #0066CC;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom {
+    width: 100%;
+    background: #fff;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.footer-bottom p {
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 40px 0 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-column {
+        text-align: center;
+    }
+
+    .footer-column.contact ul li {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+</style> 
