@@ -273,6 +273,30 @@
             overflow: visible;
         }
 
+        .view-details-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            overflow: visible;
+        }
+
+        .view-details-btn:hover {
+            background: var(--brand-green);
+            transform: translateY(-2px);
+        }
+
         .submit-idea-btn.disabled {
             background: #ccc;
             cursor: not-allowed;
@@ -666,9 +690,9 @@
                                 Monetary Rewards
                             </span>
                         </div>
-                        <a href="#" class="submit-idea-btn" data-tooltip="To submit your innovation you have to login">
-                            <i class="fas fa-lightbulb"></i>
-                            Submit Your Idea
+                        <a href="./msme-details/tvs-motors.html" class="view-details-btn">
+                            <i class="fas fa-info-circle"></i>
+                            View Details
                         </a>
                     </div>
                 </div>
@@ -729,9 +753,9 @@
                                 Monetary Rewards
                             </span>
                         </div>
-                        <a href="#" class="submit-idea-btn" data-tooltip="To submit your innovation you have to login">
-                            <i class="fas fa-lightbulb"></i>
-                            Submit Your Idea
+                        <a href="./msme-details/zoho.html" class="view-details-btn">
+                            <i class="fas fa-info-circle"></i>
+                            View Details
                         </a>
                     </div>
                 </div>
@@ -792,9 +816,9 @@
                                 Monetary Rewards
                             </span>
                         </div>
-                        <a href="#" class="submit-idea-btn" data-tooltip="To submit your innovation you have to login">
-                            <i class="fas fa-lightbulb"></i>
-                            Submit Your Idea
+                        <a href="./msme-details/apollo-hospitals.html" class="view-details-btn">
+                            <i class="fas fa-info-circle"></i>
+                            View Details
                         </a>
                     </div>
                 </div>
@@ -855,9 +879,9 @@
                                 Monetary Rewards
                             </span>
                         </div>
-                        <a href="#" class="submit-idea-btn" data-tooltip="To submit your innovation you have to login">
-                            <i class="fas fa-lightbulb"></i>
-                            Submit Your Idea
+                        <a href="./msme-details/tcs.html" class="view-details-btn">
+                            <i class="fas fa-info-circle"></i>
+                            View Details
                         </a>
                     </div>
                 </div>
@@ -918,9 +942,9 @@
                                 Monetary Rewards
                             </span>
                         </div>
-                        <a href="#" class="submit-idea-btn" data-tooltip="To submit your innovation you have to login">
-                            <i class="fas fa-lightbulb"></i>
-                            Submit Your Idea
+                        <a href="./msme-details/reliance.html" class="view-details-btn">
+                            <i class="fas fa-info-circle"></i>
+                            View Details
                         </a>
                     </div>
                 </div>
@@ -931,52 +955,8 @@
     <div class="toast" id="loginToast">Please log in to submit your idea</div>
 
     <script>
-        // Handle idea submission
-        function handleIdeaSubmission(event) {
-            event.preventDefault();
-            
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const submitButtons = document.querySelectorAll('.submit-idea-btn');
-            
-            submitButtons.forEach(button => {
-                if (!isLoggedIn) {
-                    button.classList.add('disabled');
-                } else {
-                    button.classList.remove('disabled');
-                }
-            });
-            
-            if (!isLoggedIn) {
-                localStorage.setItem('redirectAfterLogin', './submit-idea.html');
-                
-                const toast = document.getElementById('loginToast');
-                toast.style.display = 'block';
-                
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 3000);
-                
-                setTimeout(() => {
-                    window.location.href = './login.html';
-                }, 1000);
-            } else {
-                window.location.href = './submit-idea.html';
-            }
-        }
-
-        // Check login status on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const submitButtons = document.querySelectorAll('.submit-idea-btn');
-            
-            submitButtons.forEach(button => {
-                if (!isLoggedIn) {
-                    button.classList.add('disabled');
-                }
-            });
-        });
-
-        // Search and filter functionality
+        // Remove the old idea submission handling code
+        // Keep the search and filter functionality
         const searchInput = document.querySelector('.search-bar input');
         const companyItems = document.querySelectorAll('.company-item');
         const filterTags = document.querySelectorAll('.filter-tag');
