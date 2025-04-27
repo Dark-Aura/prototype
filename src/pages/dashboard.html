@@ -395,6 +395,237 @@
         .logout-btn i {
             font-size: 14px;
         }
+
+        /* Chat Interface Styles */
+        .chat-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: block;
+            height: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .chat-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .chat-participants {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge.founder {
+            background: var(--primary);
+            color: white;
+        }
+
+        .badge.triager {
+            background: var(--warning);
+            color: white;
+        }
+
+        .badge.incubator {
+            background: var(--success);
+            color: white;
+        }
+
+        .chat-messages {
+            padding: 1.5rem;
+            height: calc(100% - 120px);
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .message.sent {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            background: var(--bg-light);
+        }
+
+        .message.sent .message-content {
+            background: var(--primary);
+            color: white;
+        }
+
+        .message-content p {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .message-content small {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .message-input {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .message-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .message-input button {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Report Section Styles */
+        .report-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .report-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .report-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-new {
+            background: var(--warning);
+            color: white;
+        }
+
+        .status-in-progress {
+            background: var(--primary);
+            color: white;
+        }
+
+        .status-resolved {
+            background: var(--success);
+            color: white;
+        }
+
+        .report-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .report-details h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-primary);
+        }
+
+        .report-details p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .report-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-value {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-btn.secondary {
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
     </style>
 </head>
 <body>
@@ -434,6 +665,12 @@
                     <a href="#" class="nav-link">
                         <i class="fas fa-lightbulb"></i>
                         <span>My Ideas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -547,6 +784,36 @@
                 </li>
             </ul>
         </section>
+
+        <!-- Sample Report Section -->
+        <div class="report-section" onclick="window.location.href='reports/123.html'">
+            <div class="report-header">
+                <h2>Idea Report #1234</h2>
+                <span class="report-status status-in-progress">In Progress</span>
+            </div>
+            <div class="report-details">
+                <h3>Smart Agriculture Solution</h3>
+                <p>A comprehensive IoT-based solution for precision farming and crop monitoring.</p>
+            </div>
+            <div class="report-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Submitted By</span>
+                    <span class="meta-value">John Doe</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Date</span>
+                    <span class="meta-value">March 15, 2024</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Category</span>
+                    <span class="meta-value">Agriculture Tech</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Priority</span>
+                    <span class="meta-value">High</span>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
