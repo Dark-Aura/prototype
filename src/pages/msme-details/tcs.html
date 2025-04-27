@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCS - Innovation Details</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --brand-blue: #0066CC;
+            --brand-green: #2EAE60;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --bg-light: #f8f9fa;
+            --reward-color: #F6B93B;
+            --partnership-color: #6C5CE7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-weight: 500;
+            margin: 20px 0;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        .company-header {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .company-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--bg-light);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--brand-blue);
+        }
+
+        .company-info h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: var(--text-primary);
+        }
+
+        .company-info p {
+            margin: 8px 0 0;
+            color: var(--text-secondary);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .details-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .details-card h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .details-card h2 i {
+            color: var(--brand-blue);
+        }
+
+        .reward-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .reward-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .reward-item h3 {
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .reward-amount {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--reward-color);
+            margin: 10px 0;
+        }
+
+        .reward-description {
+            color: var(--text-secondary);
+            margin: 10px 0;
+        }
+
+        .partnership-item {
+            margin-bottom: 20px;
+        }
+
+        .partnership-item h3 {
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .partnership-description {
+            color: var(--text-secondary);
+            margin: 10px 0;
+        }
+
+        .partnership-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+        }
+
+        .partnership-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .partnership-benefits li:last-child {
+            margin-bottom: 0;
+        }
+
+        .partnership-benefits li i {
+            color: var(--partnership-color);
+            margin-top: 4px;
+            font-size: 0.9rem;
+        }
+
+        .problem-statement {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .problem-statement h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .problem-statement h2 i {
+            color: var(--brand-blue);
+        }
+
+        .problem-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .problem-reward {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--reward-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .problem-reward i {
+            font-size: 1.2rem;
+        }
+
+        .submit-idea-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            overflow: visible;
+            margin-top: 20px;
+        }
+
+        .submit-idea-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .submit-idea-btn.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .submit-idea-btn.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .submit-idea-btn[data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+        }
+
+        .submit-idea-btn[data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .submit-idea-btn[data-tooltip]::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: -12px;
+        }
+
+        .submit-idea-btn[data-tooltip]:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .program-overview {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .program-overview h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .program-overview h2 i {
+            color: var(--brand-blue);
+        }
+
+        .program-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .program-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .program-objectives {
+            margin: 20px 0;
+        }
+
+        .objective-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .objective-item i {
+            color: var(--brand-blue);
+            margin-top: 4px;
+        }
+
+        .program-requirements {
+            margin: 20px 0;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .requirement-item i {
+            color: var(--brand-blue);
+            margin-top: 4px;
+        }
+
+        .program-timeline {
+            margin: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .timeline-item i {
+            color: var(--brand-blue);
+            margin-top: 4px;
+        }
+
+        .submit-section {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .submit-section h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .submit-section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .company-challenge {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .company-challenge h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .company-challenge h2 i {
+            color: var(--brand-blue);
+        }
+
+        .challenge-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .challenge-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .challenge-areas {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .challenge-areas h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .challenge-areas h2 i {
+            color: var(--brand-blue);
+        }
+
+        .challenge-area {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .challenge-area:hover {
+            transform: translateY(-2px);
+        }
+
+        .challenge-area:last-child {
+            margin-bottom: 0;
+        }
+
+        .challenge-area h3 {
+            margin: 0 0 10px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .challenge-area h3 i {
+            color: var(--brand-blue);
+            font-size: 1.1rem;
+        }
+
+        .challenge-area p {
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .innovation-opportunity {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .innovation-opportunity h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .innovation-opportunity h2 i {
+            color: var(--brand-blue);
+        }
+
+        .opportunity-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .opportunity-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .opportunity-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .opportunity-item h3 {
+            margin: 0 0 10px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .opportunity-item h3 i {
+            color: var(--brand-blue);
+            font-size: 1.1rem;
+        }
+
+        .opportunity-description {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .evaluation-criteria {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .evaluation-criteria h2 {
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .evaluation-criteria h2 i {
+            color: var(--brand-blue);
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .criteria-card {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .criteria-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .criteria-card h3 {
+            margin: 0 0 15px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .criteria-card h3 i {
+            color: var(--brand-blue);
+        }
+
+        .criteria-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .criteria-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .criteria-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .criteria-points {
+            color: var(--brand-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .reward-tiers {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .reward-tiers h3 {
+            margin: 0 0 15px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .reward-tiers h3 i {
+            color: var(--reward-color);
+        }
+
+        .tier-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .tier-item:hover {
+            transform: translateX(5px);
+        }
+
+        .tier-range {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .tier-reward {
+            color: var(--reward-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .tier-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .company-header {
+                padding: 20px;
+            }
+
+            .company-challenge,
+            .challenge-areas,
+            .innovation-opportunity,
+            .submit-section {
+                padding: 20px;
+            }
+
+            .challenge-stats {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 15px;
+            }
+
+            .challenge-area,
+            .opportunity-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../msmes.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to MSMEs
+        </a>
+
+        <div class="company-header">
+            <div class="company-logo">TCS</div>
+            <div class="company-info">
+                <h1>Tata Consultancy Services</h1>
+                <p>IT Services & Consulting</p>
+            </div>
+        </div>
+
+        <div class="company-challenge">
+            <h2><i class="fas fa-exclamation-circle"></i>Our Business Challenge</h2>
+            <p class="challenge-description">
+                As a global leader in IT services, we're facing the challenge of evolving our business model to stay ahead in the rapidly changing digital landscape. While our current services are successful, we recognize the need to transform and innovate to maintain our market leadership. We're seeking external innovators who can help us:
+            </p>
+            <div class="challenge-stats">
+                <div class="stat-item">
+                    <div class="stat-value">₹25L</div>
+                    <div class="stat-label">Initial Funding</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5 Years</div>
+                    <div class="stat-label">Partnership Horizon</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Key Areas</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="challenge-areas">
+            <h2><i class="fas fa-bullseye"></i>Key Areas for Innovation</h2>
+            <div class="challenge-area">
+                <h3><i class="fas fa-robot"></i>AI-Driven Service Transformation</h3>
+                <p>We need solutions that can transform our traditional IT services into AI-powered, automated services. This includes developing intelligent systems that can learn from our vast service delivery experience and improve efficiency.</p>
+            </div>
+            <div class="challenge-area">
+                <h3><i class="fas fa-project-diagram"></i>Next-Gen Enterprise Solutions</h3>
+                <p>Looking for innovative approaches to enterprise software development that can reduce development time, improve quality, and enable rapid deployment of business solutions.</p>
+            </div>
+            <div class="challenge-area">
+                <h3><i class="fas fa-chart-line"></i>Digital Business Models</h3>
+                <p>Seeking new business models and revenue streams that leverage emerging technologies to create sustainable competitive advantages in the IT services market.</p>
+            </div>
+        </div>
+
+        <div class="innovation-opportunity">
+            <h2><i class="fas fa-lightbulb"></i>Innovation Opportunity</h2>
+            <div class="opportunity-item">
+                <h3><i class="fas fa-handshake"></i>Strategic Partnership</h3>
+                <p class="opportunity-description">
+                    We're offering more than just funding - we're looking for long-term strategic partners who can help us transform our business. Successful innovators will have the opportunity to:
+                </p>
+                <ul class="partnership-benefits">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Access to TCS' global client base and market reach</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Integration with our existing service delivery platform</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Joint development and commercialization opportunities</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="opportunity-item">
+                <h3><i class="fas fa-coins"></i>Funding & Support</h3>
+                <p class="opportunity-description">
+                    We've allocated significant resources to support innovative solutions:
+                </p>
+                <ul class="partnership-benefits">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Initial funding up to ₹25,00,000 for promising concepts</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Additional development funding up to ₹1,00,00,000</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Access to TCS' technical resources and expertise</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="evaluation-criteria">
+            <h2><i class="fas fa-clipboard-check"></i>Evaluation Criteria</h2>
+            <div class="criteria-grid">
+                <div class="criteria-card">
+                    <h3><i class="fas fa-microchip"></i>Technical Innovation (40 points)</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Novelty of the solution</span>
+                        <span class="criteria-points">0-15 points</span>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Technical complexity</span>
+                        <span class="criteria-points">0-10 points</span>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Implementation feasibility</span>
+                        <span class="criteria-points">0-15 points</span>
+                    </div>
+                </div>
+                <div class="criteria-card">
+                    <h3><i class="fas fa-chart-line"></i>Business Impact (30 points)</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Market potential</span>
+                        <span class="criteria-points">0-10 points</span>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Cost savings/Revenue generation</span>
+                        <span class="criteria-points">0-10 points</span>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Scalability</span>
+                        <span class="criteria-points">0-10 points</span>
+                    </div>
+                </div>
+                <div class="criteria-card">
+                    <h3><i class="fas fa-chess"></i>Strategic Value (20 points)</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Alignment with TCS goals</span>
+                        <span class="criteria-points">0-10 points</span>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Competitive advantage</span>
+                        <span class="criteria-points">0-10 points</span>
+                    </div>
+                </div>
+                <div class="criteria-card">
+                    <h3><i class="fas fa-clock"></i>Implementation Timeline (10 points)</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Time to market</span>
+                        <span class="criteria-points">0-5 points</span>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-label">Resource requirements</span>
+                        <span class="criteria-points">0-5 points</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reward-tiers">
+                <h3><i class="fas fa-trophy"></i>Reward Tiers</h3>
+                <div class="tier-item">
+                    <div>
+                        <div class="tier-range">80-100 points</div>
+                        <div class="tier-description">Revolutionary solution with high market impact</div>
+                    </div>
+                    <div class="tier-reward">₹50L - ₹1Cr</div>
+                </div>
+                <div class="tier-item">
+                    <div>
+                        <div class="tier-range">60-79 points</div>
+                        <div class="tier-description">Significant innovation with good market potential</div>
+                    </div>
+                    <div class="tier-reward">₹25L - ₹49.99L</div>
+                </div>
+                <div class="tier-item">
+                    <div>
+                        <div class="tier-range">40-59 points</div>
+                        <div class="tier-description">Incremental innovation with moderate impact</div>
+                    </div>
+                    <div class="tier-reward">₹10L - ₹24.99L</div>
+                </div>
+                <div class="tier-item">
+                    <div>
+                        <div class="tier-range">20-39 points</div>
+                        <div class="tier-description">Minor improvements with limited impact</div>
+                    </div>
+                    <div class="tier-reward">₹5L - ₹9.99L</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-section">
+            <h2>Ready to Transform TCS?</h2>
+            <p>If you have an innovative solution that can help us evolve our business model and create new opportunities, we want to hear from you. Join us in shaping the future of IT services.</p>
+            <a href="#" class="submit-idea-btn disabled" data-tooltip="Please login to submit your solution">
+                <i class="fas fa-lightbulb"></i>
+                Submit Your Innovation
+            </a>
+        </div>
+    </div>
+
+    <script src="../../js/theme.js"></script>
+</body>
+</html> 
