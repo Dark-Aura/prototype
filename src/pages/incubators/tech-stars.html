@@ -5,28 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechStars Bangalore - Plan for Money</title>
     <link rel="stylesheet" href="../../css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../../../public/images/favicon.png">
     <style>
         :root {
-            --primary: #6C63FF;
-            --secondary: #5A54D9;
-            --text-primary: #2D3436;
-            --text-secondary: #636E72;
-            --background: #F8F9FA;
+            --brand-blue: #1A365D;
+            --brand-green: #2C5530;
+            --text-primary: #2D3748;
+            --text-secondary: #718096;
+            --bg-light: #F7FAFC;
+            --reward: #D4AF37;
+            --partnership: #553C9A;
         }
 
         .incubator-detail {
             padding: 80px 0;
-            background: var(--background);
+            background: var(--bg-light);
         }
 
         .incubator-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-green));
             color: white;
-            padding: 80px 0;
+            padding: 140px 0 0 0;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -39,7 +44,7 @@
             left: 0;
             right: 0;
             height: 100px;
-            background: var(--background);
+            background: var(--bg-light);
             transform: skewY(-3deg);
         }
 
@@ -47,6 +52,8 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.25);
         }
 
         .incubator-header .subtitle {
@@ -86,7 +93,7 @@
         }
 
         .stat-card {
-            background: var(--background);
+            background: var(--bg-light);
             padding: 30px;
             border-radius: 15px;
             text-align: center;
@@ -98,7 +105,7 @@
         }
 
         .stat-card h3 {
-            color: var(--primary);
+            color: var(--brand-blue);
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
@@ -122,12 +129,12 @@
         .program-section {
             margin-bottom: 40px;
             padding: 30px;
-            background: var(--background);
+            background: var(--bg-light);
             border-radius: 15px;
         }
 
         .program-section h3 {
-            color: var(--primary);
+            color: var(--brand-blue);
             font-size: 1.5rem;
             margin-bottom: 2rem;
             text-align: center;
@@ -161,14 +168,14 @@
 
         .service-card i {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--brand-blue);
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .service-card:hover i {
             transform: scale(1.1);
-            color: var(--secondary);
+            color: var(--brand-green);
         }
 
         .service-card h4 {
@@ -226,7 +233,7 @@
 
         .program-section li::before {
             content: '•';
-            color: var(--primary);
+            color: var(--brand-blue);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -236,7 +243,7 @@
             text-align: center;
             margin: 60px 0;
             padding: 60px;
-            background: var(--background);
+            background: var(--bg-light);
             border-radius: 20px;
         }
 
@@ -249,7 +256,7 @@
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background: var(--primary);
+            background: var(--brand-blue);
             color: white;
             border-radius: 30px;
             text-decoration: none;
@@ -259,7 +266,7 @@
         }
 
         .cta-button:hover {
-            background: var(--secondary);
+            background: var(--brand-green);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
         }
@@ -286,7 +293,7 @@
         }
 
         .navbar .logo span {
-            color: var(--primary);
+            color: var(--brand-blue);
         }
 
         .incubator-actions {
@@ -371,24 +378,10 @@
         }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="../../../public/images/favicon.png" alt="Plan for Money">
-                <h1>Plan <span>For</span> <span>Money</span></h1>
-            </div>
-            <div class="nav-links">
-                <a href="../../../index.html">Home</a>
-                <a href="../mentors.html">Mentors</a>
-                <a href="../msmes.html">MSME's</a>
-                <a href="../incubators.html">Incubators</a>
-                <a href="../education.html">Education</a>
-                <a href="../login.html">Login</a>
-                <a href="../signup.html" class="cta-button">Sign Up</a>
-            </div>
-        </div>
-    </nav>
+<body class="font-inter bg-bg-light">
+    <a href="../../../index.html" class="home-button" style="position: fixed; top: 20px; right: 20px; background: var(--brand-blue); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; z-index: 1001; transition: background-color 0.3s ease;">
+        <i class="fas fa-home"></i> Home
+    </a>
 
     <div class="incubator-header">
         <div class="container">
