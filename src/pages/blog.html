@@ -4,316 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Plan for Money</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+        /* Remove custom navbar styles that conflict with Tailwind */
+        .navbar, .navbar .container, .logo, .nav-links, .profile-dropdown, .profile-icon, .dropdown-menu, .dropdown-item, .dropdown-divider {
+            all: unset;
         }
-
-        body {
-            margin: 0;
-            padding-top: 60px; /* Reduced from 80px */
-            background: #f8f9fa;
-            min-height: 100vh;
+        /* Keep the premium palette and blog card styles */
+        :root {
+            --brand-blue: #1A365D;
+            --brand-green: #2C5530;
+            --reward: #D4AF37;
         }
-
-        /* Navbar Styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 0.5rem 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            height: 60px;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .logo img {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-        }
-
-        .logo h1 {
-            color: #2D3436;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin: 0;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .profile-dropdown {
-            position: relative;
-            display: none;
-        }
-
-        .profile-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #0066CC;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .profile-icon:hover {
-            background: #2EAE60;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 10px);
-            right: 0;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 0.5rem;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .profile-dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 15px;
-            color: #2D3436;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-item:hover {
-            background: #f8f9fa;
-            color: #0066CC;
-        }
-
-        .dropdown-item i {
-            font-size: 1rem;
-            width: 20px;
-        }
-
-        .dropdown-divider {
-            height: 1px;
-            background: rgba(0, 0, 0, 0.1);
-            margin: 0.5rem 0;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #2D3436;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #0066CC;
-        }
-
-        .nav-links .cta-button {
-            background: #0066CC;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-
-        .nav-links .cta-button:hover {
-            background: #2EAE60;
-        }
-
         .blog-header {
-            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
-            color: white;
-            padding: 2.5rem 0; /* Significantly reduced from 4rem */
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+            color: #fff;
+            padding: 2.5rem 0;
             text-align: center;
-            margin-bottom: 2rem; /* Reduced from 3rem */
+            margin-bottom: 2rem;
             position: relative;
         }
-
         .blog-header h1 {
             font-size: 2.25rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            color: var(--reward);
         }
-
         .blog-header p {
             font-size: 1.1rem;
             opacity: 0.9;
-            max-width: 800px; /* Increased from 600px */
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 1rem;
         }
-
         .blog-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem; /* Adjusted padding */
+            padding: 0 1.5rem;
         }
-
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduced from 300px */
-            gap: 1.25rem; /* Further reduced from 1.5rem */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
             padding: 0.5rem 0;
         }
-
         .blog-card {
-            background: white;
-            border-radius: 8px; /* Reduced from 10px */
+            background: #fff;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1.5px solid var(--brand-blue);
         }
-
         .blog-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 32px -8px var(--brand-blue), 0 1.5px 8px rgba(0,0,0,0.05);
+            border-color: var(--reward);
         }
-
         .blog-image {
             width: 100%;
-            height: 160px; /* Reduced from 200px */
-            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            height: 160px;
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .blog-image i {
-            font-size: 2.5rem; /* Reduced from 3rem */
-            color: white;
-            opacity: 0.9;
+            font-size: 2.5rem;
+            color: var(--reward);
+            opacity: 0.95;
         }
-
         .blog-content {
-            padding: 1rem; /* Reduced from 1.25rem */
+            padding: 1rem;
         }
-
         .blog-title {
-            font-size: 1.1rem; /* Reduced from 1.2rem */
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
-            color: #2D3436;
+            color: var(--brand-blue);
             font-weight: 600;
             line-height: 1.4;
         }
-
         .blog-excerpt {
-            color: #636E72;
+            color: var(--brand-green);
             line-height: 1.4;
             margin-bottom: 0.75rem;
             font-size: 0.9rem;
         }
-
         .blog-meta {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #636E72;
+            color: var(--brand-blue);
             font-size: 0.85rem;
             padding-top: 0.5rem;
             border-top: 1px solid #eee;
             margin-top: 0.5rem;
         }
-
         .blog-meta i {
-            color: #0066CC;
+            color: var(--reward);
         }
     </style>
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="../../index.html" class="logo">
-                <img src="../../public/images/favicon.png" alt="Plan for Money">
-                <h1>Plan <span>For</span> <span>Money</span></h1>
-            </a>
-            <div class="nav-links">
-                <a href="blog.html">Blog</a>
-                <a href="mentors.html">Mentors</a>
-                <a href="msmes.html">MSME's</a>
-                <a href="incubators.html">Incubators</a>
-                <a href="education.html">Education</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="login.html" class="login-btn">Login</a>
-                <a href="signup.html" class="cta-button signup-btn">Sign Up</a>
-                <div class="profile-dropdown">
-                    <div class="profile-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="dropdown-menu">
-                        <a href="dashboard.html" class="dropdown-item">
-                            <i class="fas fa-tachometer-alt"></i>
-                            Dashboard
-                        </a>
-                        <a href="settings.html" class="dropdown-item">
-                            <i class="fas fa-cog"></i>
-                            Settings
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item" onclick="handleLogout()">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Logout
-                        </a>
-                    </div>
+<body class="font-inter bg-bg-light">
+    <!-- Navbar (copied from home page) -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 gradient-bg shadow-premium">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="flex items-center">
+                        <img src="../../logo.png" alt="Logo" class="h-12 w-auto" />
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="blog.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Blog</a>
+                    <a href="mentors.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Mentors</a>
+                    <a href="msmes.html" class="nav-link text-white hover:text-reward transition-colors duration-200">MSME's</a>
+                    <a href="incubators.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Incubators</a>
+                    <a href="education.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Education</a>
+                    <a href="pricing.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Pricing</a>
+                    <a href="login.html" class="gradient-button text-white px-8 py-3 rounded-full font-semibold hover:gradient-button-hover transition-all duration-300">Login</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Blog Header -->
-    <header class="blog-header">
-        <div class="container">
-            <h1>Startup & MSME Insights</h1>
-            <p>Discover the latest trends, strategies, and success stories in the startup and MSME ecosystem</p>
+    <!-- Blog Hero Section -->
+    <header class="min-h-[60vh] flex items-center justify-center relative overflow-hidden blog-header" style="padding-top:7rem; padding-bottom:7rem;">
+        <div class="absolute inset-0 gradient-bg"></div>
+        <div class="text-center px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto relative z-10">
+            <img src="../../logo.png" alt="Logo" class="h-20 w-auto mx-auto mb-8" />
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight font-playfair gradient-text">Startup & MSME Insights</h1>
+            <p class="text-2xl sm:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">Discover the latest trends, strategies, and success stories in the startup and MSME ecosystem.</p>
         </div>
     </header>
 
