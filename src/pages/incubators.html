@@ -11,13 +11,13 @@
     <link rel="icon" type="image/png" href="../../public/images/favicon.png">
     <style>
         :root {
-            --brand-blue: #0066CC;
-            --brand-green: #2EAE60;
-            --text-primary: #2D3436;
-            --text-secondary: #636E72;
-            --bg-light: #f8f9fa;
-            --reward-color: #F6B93B;
-            --partnership-color: #6C5CE7;
+            --brand-blue: #1A365D;
+            --brand-green: #2C5530;
+            --text-primary: #2D3748;
+            --text-secondary: #718096;
+            --bg-light: #F7FAFC;
+            --reward-color: #D4AF37;
+            --partnership-color: #553C9A;
         }
 
         body {
@@ -32,7 +32,7 @@
         .hero-section {
             position: relative;
             padding: 120px 0 80px;
-            background: linear-gradient(135deg, #0066CC 0%, #2EAE60 100%);
+            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
             color: white;
             overflow: hidden;
             min-height: 60vh;
@@ -244,10 +244,11 @@
 
         .incubator-cards {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
             margin-top: 40px;
-            padding: 20px;
+            padding: 32px 0 32px 0;
+            justify-items: center;
         }
 
         .incubator-card {
@@ -255,12 +256,16 @@
             overflow: visible;
             z-index: 1;
             background: white;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            padding: 32px 24px 28px 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
             display: flex;
             flex-direction: column;
             gap: 20px;
+            min-width: 320px;
+            max-width: 370px;
+            width: 100%;
+            align-items: stretch;
         }
 
         .incubator-card:hover {
@@ -378,7 +383,10 @@
             font-size: 0.875rem;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             width: 100%;
             transition: all 0.2s ease;
         }
@@ -567,20 +575,25 @@
             justify-content: center;
             gap: 8px;
             background: var(--brand-blue);
-            color: white;
-            padding: 12px 24px;
+            color: #fff;
+            padding: 14px 0;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             width: 100%;
-            margin-top: auto;
+            margin-top: 18px;
             text-align: center;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(26,54,93,0.08);
         }
 
         .cta-button:hover {
             background: var(--brand-green);
-            transform: translateY(-2px);
+            color: #fff;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(44,85,48,0.12);
         }
 
         /* Add nav-buttons styles */
@@ -705,7 +718,7 @@
                             <span>Success Rate</span>
                         </div>
                     </div>
-                    <a href="incubators/tech-stars.html" class="cta-button">View Details</a>
+                    <a href="incubators/tech-stars.html" style="display:block;margin:20px auto 0 auto;padding:12px 0;width:90%;background:#1A365D;color:#fff;font-weight:700;text-align:center;border-radius:8px;text-decoration:none;font-size:1rem;">View Details</a>
                 </div>
 
                 <!-- HealthTech Card -->
@@ -739,7 +752,7 @@
                             <span>Success Rate</span>
                         </div>
                     </div>
-                    <a href="incubators/health-tech.html" class="cta-button">View Details</a>
+                    <a href="incubators/health-tech.html" style="display:block;margin:20px auto 0 auto;padding:12px 0;width:90%;background:#1A365D;color:#fff;font-weight:700;text-align:center;border-radius:8px;text-decoration:none;font-size:1rem;">View Details</a>
                 </div>
 
                 <!-- FinTech Card -->
@@ -749,23 +762,23 @@
                         <h3>FinTech Factory</h3>
                         <div class="incubator-rating">
                             <div class="stars">★★★★★</div>
-                            <span class="rating-count">(156)</span>
+                            <span class="rating-count">(112)</span>
                         </div>
                     </div>
                     <div class="incubator-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        Chennai, India
+                        Delhi, India
                     </div>
                     <p class="incubator-description">
-                        Leading fintech incubator supporting innovative financial technology solutions.
+                        Leading financial technology incubator supporting innovative fintech solutions.
                     </p>
                     <div class="incubator-stats">
                         <div class="stat">
-                            <strong>200+</strong>
+                            <strong>120+</strong>
                             <span>Startups</span>
                         </div>
                         <div class="stat">
-                            <strong>$8M</strong>
+                            <strong>$4M</strong>
                             <span>Avg Funding</span>
                         </div>
                         <div class="stat">
@@ -773,7 +786,7 @@
                             <span>Success Rate</span>
                         </div>
                     </div>
-                    <a href="incubators/fintech-factory.html" class="cta-button">View Details</a>
+                    <a href="incubators/fintech-factory.html" style="display:block;margin:20px auto 0 auto;padding:12px 0;width:90%;background:#1A365D;color:#fff;font-weight:700;text-align:center;border-radius:8px;text-decoration:none;font-size:1rem;">View Details</a>
                 </div>
             </div>
         </div>
