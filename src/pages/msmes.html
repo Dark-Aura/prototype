@@ -75,6 +75,37 @@
             margin-right: auto;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .hero-button {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .hero-button.primary {
+            background: white;
+            color: var(--brand-blue);
+        }
+
+        .hero-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
         .hero-pattern {
             position: absolute;
             top: 0;
@@ -133,24 +164,27 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .company-item:hover {
             transform: translateY(-5px);
-            z-index: 2;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--brand-blue);
         }
 
         .company-logo {
             width: 120px;
             height: 120px;
-            background: var(--bg-light);
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 600;
-            color: var(--brand-blue);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .company-info {
@@ -230,11 +264,12 @@
         .reward-badges {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .reward-badge {
-            padding: 8px 16px;
+            padding: 10px 16px;
             border-radius: 20px;
             font-size: 0.875rem;
             font-weight: 500;
@@ -242,6 +277,7 @@
             align-items: center;
             gap: 0.5rem;
             white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .reward-badge.partnership {
@@ -252,25 +288,6 @@
         .reward-badge.monetary {
             background: rgba(246, 185, 59, 0.1);
             color: var(--reward-color);
-        }
-
-        .submit-idea-btn {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: var(--brand-blue);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-            overflow: visible;
         }
 
         .view-details-btn {
@@ -290,11 +307,32 @@
             width: 100%;
             text-align: center;
             overflow: visible;
+            border: none;
         }
 
         .view-details-btn:hover {
             background: var(--brand-green);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .submit-idea-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            overflow: visible;
         }
 
         .submit-idea-btn.disabled {
@@ -608,342 +646,205 @@
     <section class="hero-section">
         <div class="hero-pattern"></div>
         <div class="hero-content">
-            <h1>Innovate Together</h1>
-            <div class="hero-tagline">You Bring the Vision. We Bring the Engine.</div>
-            <p class="hero-description">Join forces with industry leaders to build revolutionary products. Access our studio's expertise, capital, and market reach to transform your ideas into game-changing solutions.</p>
+            <h1>Innovation & Growth Opportunities</h1>
+            <p class="hero-tagline">Connect with Leading Companies & MSMEs</p>
+            <p class="hero-description">
+                Join our platform to solve corporate challenges for rewards or collaborate with MSMEs for growth opportunities. 
+                Whether you're an innovator, entrepreneur, or business expert, find your perfect match here.
+            </p>
+            <div class="hero-buttons">
+                <a href="#corporate-challenges" class="hero-button primary">View Corporate Challenges</a>
+                <a href="#msme-collaboration" class="hero-button secondary">Explore MSME Opportunities</a>
+            </div>
         </div>
     </section>
 
-    <section class="companies-section">
+    <section id="corporate-challenges" class="companies-section">
         <div class="container">
-            <div class="filters-section">
-                <div class="filters-container">
-                    <div class="search-bar">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search companies by industry, technology, or keywords...">
-                    </div>
-                    <div class="filter-tags">
-                        <span class="filter-tag active">All Industries</span>
-                        <span class="filter-tag">Technology</span>
-                        <span class="filter-tag">Automotive</span>
-                        <span class="filter-tag">Healthcare</span>
-                        <span class="filter-tag">Finance</span>
-                        <span class="filter-tag">Manufacturing</span>
-                    </div>
-                </div>
-            </div>
-
+            <h2 class="section-title">Corporate Challenges</h2>
+            <p class="section-description">Solve real business problems and earn rewards from leading companies</p>
+            
             <div class="company-list">
-                <!-- TVS Motors -->
-                <div class="company-item">
-                    <div class="company-logo">TVS</div>
-                    <div class="company-info">
-                        <div class="company-header">
-                            <h3>TVS Motors</h3>
-                            <p>Automotive & Mobility</p>
-                        </div>
-                        <div class="criteria-grid">
-                            <div class="criteria-section">
-                                <h4><i class="fas fa-search"></i>What We're Looking For</h4>
-                                <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Innovative solutions in auto, mobility, IoT, or fleet-tech</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Electric vehicle technology and sustainable mobility solutions</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Connected vehicle platforms and smart transportation systems</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="criteria-section">
-                                <h4><i class="fas fa-clipboard-list"></i>Submission Criteria</h4>
-                                <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Detailed technical specifications and feasibility analysis</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Market potential and target audience analysis</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Implementation roadmap and resource requirements</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="company-actions">
-                        <div class="reward-badges">
-                            <span class="reward-badge partnership">
-                                <i class="fas fa-handshake"></i>
-                                Partnership Opportunity
-                            </span>
-                            <span class="reward-badge monetary">
-                                <i class="fas fa-coins"></i>
-                                Monetary Rewards
-                            </span>
-                        </div>
-                        <a href="./msme-details/tvs-motors.html" class="view-details-btn">
-                            <i class="fas fa-info-circle"></i>
-                            View Details
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Zoho -->
-                <div class="company-item">
-                    <div class="company-logo">ZH</div>
+                <div class="company-item" data-aos="fade-up">
+                    <div class="company-logo">Z</div>
                     <div class="company-info">
                         <div class="company-header">
                             <h3>Zoho Corporation</h3>
-                            <p>Enterprise Software</p>
+                            <p>Digital Transformation Challenge</p>
                         </div>
                         <div class="criteria-grid">
                             <div class="criteria-section">
-                                <h4><i class="fas fa-search"></i>What We're Looking For</h4>
+                                <h4><i class="fas fa-tasks"></i>Problem Statement</h4>
                                 <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Enterprise software solutions and productivity tools</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>AI/ML applications for business processes</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Innovative CRM and business management solutions</span>
-                                    </li>
+                                    <li><i class="fas fa-check"></i>Legacy system modernization</li>
+                                    <li><i class="fas fa-check"></i>Cloud migration strategy</li>
+                                    <li><i class="fas fa-check"></i>Data analytics integration</li>
                                 </ul>
                             </div>
                             <div class="criteria-section">
-                                <h4><i class="fas fa-clipboard-list"></i>Submission Criteria</h4>
+                                <h4><i class="fas fa-bullseye"></i>Requirements</h4>
                                 <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Complete product architecture and technical documentation</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Integration capabilities with existing Zoho products</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Scalability and security considerations</span>
-                                    </li>
+                                    <li><i class="fas fa-check"></i>Scalable solution</li>
+                                    <li><i class="fas fa-check"></i>Cost-effective approach</li>
+                                    <li><i class="fas fa-check"></i>Minimal downtime</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="company-actions">
                         <div class="reward-badges">
-                            <span class="reward-badge partnership">
+                            <div class="reward-badge">
+                                <i class="fas fa-trophy"></i>
+                                Reward: ₹5,00,000
+                            </div>
+                            <div class="reward-badge partnership">
                                 <i class="fas fa-handshake"></i>
-                                Partnership Opportunity
-                            </span>
-                            <span class="reward-badge monetary">
-                                <i class="fas fa-coins"></i>
-                                Monetary Rewards
-                            </span>
+                                Potential Partnership
+                            </div>
                         </div>
-                        <a href="./msme-details/zoho.html" class="view-details-btn">
-                            <i class="fas fa-info-circle"></i>
+                        <a href="msme-details.html?id=zoho" class="view-details-btn">
+                            <i class="fas fa-arrow-right"></i>
                             View Details
                         </a>
                     </div>
                 </div>
 
-                <!-- Apollo Hospitals -->
-                <div class="company-item">
-                    <div class="company-logo">AH</div>
+                <div class="company-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="company-logo">T</div>
                     <div class="company-info">
                         <div class="company-header">
-                            <h3>Apollo Hospitals</h3>
-                            <p>Healthcare & Technology</p>
+                            <h3>TVS Motors</h3>
+                            <p>Supply Chain Optimization</p>
                         </div>
                         <div class="criteria-grid">
                             <div class="criteria-section">
-                                <h4><i class="fas fa-search"></i>What We're Looking For</h4>
+                                <h4><i class="fas fa-tasks"></i>Problem Statement</h4>
                                 <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Healthcare technology and telemedicine solutions</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Patient care and hospital management innovations</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Medical device and healthcare IoT concepts</span>
-                                    </li>
+                                    <li><i class="fas fa-check"></i>Inventory management</li>
+                                    <li><i class="fas fa-check"></i>Logistics optimization</li>
+                                    <li><i class="fas fa-check"></i>Supplier integration</li>
                                 </ul>
                             </div>
                             <div class="criteria-section">
-                                <h4><i class="fas fa-clipboard-list"></i>Submission Criteria</h4>
+                                <h4><i class="fas fa-bullseye"></i>Requirements</h4>
                                 <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Compliance with healthcare regulations and standards</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Patient data security and privacy considerations</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Clinical validation and testing requirements</span>
-                                    </li>
+                                    <li><i class="fas fa-check"></i>Real-time tracking</li>
+                                    <li><i class="fas fa-check"></i>Cost reduction</li>
+                                    <li><i class="fas fa-check"></i>Sustainable approach</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="company-actions">
                         <div class="reward-badges">
-                            <span class="reward-badge partnership">
+                            <div class="reward-badge">
+                                <i class="fas fa-trophy"></i>
+                                Reward: ₹3,50,000
+                            </div>
+                            <div class="reward-badge partnership">
+                                <i class="fas fa-handshake"></i>
+                                Potential Partnership
+                            </div>
+                        </div>
+                        <a href="msme-details.html?id=tvs" class="view-details-btn">
+                            <i class="fas fa-arrow-right"></i>
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="msme-collaboration" class="companies-section" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title">MSME Collaboration</h2>
+            <p class="section-description">Partner with growing MSMEs and help them scale their business</p>
+            
+            <div class="company-list">
+                <div class="company-item" data-aos="fade-up">
+                    <div class="company-logo">A</div>
+                    <div class="company-info">
+                        <div class="company-header">
+                            <h3>AutoTech Solutions</h3>
+                            <p>Automotive Parts Manufacturer</p>
+                        </div>
+                        <div class="criteria-grid">
+                            <div class="criteria-section">
+                                <h4><i class="fas fa-bullseye"></i>Growth Goals</h4>
+                                <ul class="criteria-list">
+                                    <li><i class="fas fa-check"></i>Market expansion</li>
+                                    <li><i class="fas fa-check"></i>Product diversification</li>
+                                    <li><i class="fas fa-check"></i>Technology upgrade</li>
+                                </ul>
+                            </div>
+                            <div class="criteria-section">
+                                <h4><i class="fas fa-handshake"></i>Partnership Benefits</h4>
+                                <ul class="criteria-list">
+                                    <li><i class="fas fa-check"></i>Equity partnership</li>
+                                    <li><i class="fas fa-check"></i>Revenue sharing</li>
+                                    <li><i class="fas fa-check"></i>Technical support</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-actions">
+                        <div class="reward-badges">
+                            <div class="reward-badge partnership">
                                 <i class="fas fa-handshake"></i>
                                 Partnership Opportunity
-                            </span>
-                            <span class="reward-badge monetary">
-                                <i class="fas fa-coins"></i>
-                                Monetary Rewards
-                            </span>
+                            </div>
+                            <div class="reward-badge">
+                                <i class="fas fa-chart-line"></i>
+                                Growth Potential: 200%
+                            </div>
                         </div>
-                        <a href="./msme-details/apollo-hospitals.html" class="view-details-btn">
-                            <i class="fas fa-info-circle"></i>
+                        <a href="msme-details.html?id=autotech" class="view-details-btn">
+                            <i class="fas fa-arrow-right"></i>
                             View Details
                         </a>
                     </div>
                 </div>
 
-                <!-- Tata Consultancy Services -->
-                <div class="company-item">
-                    <div class="company-logo">TCS</div>
+                <div class="company-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="company-logo">T</div>
                     <div class="company-info">
                         <div class="company-header">
-                            <h3>Tata Consultancy Services</h3>
-                            <p>IT Services & Consulting</p>
+                            <h3>Textile Innovations</h3>
+                            <p>Smart Textile Manufacturer</p>
                         </div>
                         <div class="criteria-grid">
                             <div class="criteria-section">
-                                <h4><i class="fas fa-search"></i>What We're Looking For</h4>
+                                <h4><i class="fas fa-bullseye"></i>Growth Goals</h4>
                                 <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Enterprise digital transformation solutions</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Cloud-native applications and services</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Industry-specific AI/ML applications</span>
-                                    </li>
+                                    <li><i class="fas fa-check"></i>Smart fabric development</li>
+                                    <li><i class="fas fa-check"></i>Export market entry</li>
+                                    <li><i class="fas fa-check"></i>Automation integration</li>
                                 </ul>
                             </div>
                             <div class="criteria-section">
-                                <h4><i class="fas fa-clipboard-list"></i>Submission Criteria</h4>
+                                <h4><i class="fas fa-handshake"></i>Partnership Benefits</h4>
                                 <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Enterprise-grade solution architecture</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Integration with existing enterprise systems</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Scalability and performance metrics</span>
-                                    </li>
+                                    <li><i class="fas fa-check"></i>Joint venture opportunity</li>
+                                    <li><i class="fas fa-check"></i>Technology transfer</li>
+                                    <li><i class="fas fa-check"></i>Market access</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="company-actions">
                         <div class="reward-badges">
-                            <span class="reward-badge partnership">
+                            <div class="reward-badge partnership">
                                 <i class="fas fa-handshake"></i>
                                 Partnership Opportunity
-                            </span>
-                            <span class="reward-badge monetary">
-                                <i class="fas fa-coins"></i>
-                                Monetary Rewards
-                            </span>
-                        </div>
-                        <a href="./msme-details/tcs.html" class="view-details-btn">
-                            <i class="fas fa-info-circle"></i>
-                            View Details
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Reliance Industries -->
-                <div class="company-item">
-                    <div class="company-logo">RI</div>
-                    <div class="company-info">
-                        <div class="company-header">
-                            <h3>Reliance Industries</h3>
-                            <p>Diversified Conglomerate</p>
-                        </div>
-                        <div class="criteria-grid">
-                            <div class="criteria-section">
-                                <h4><i class="fas fa-search"></i>What We're Looking For</h4>
-                                <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Retail and e-commerce innovations</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Digital payment and fintech solutions</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Energy and sustainability technologies</span>
-                                    </li>
-                                </ul>
                             </div>
-                            <div class="criteria-section">
-                                <h4><i class="fas fa-clipboard-list"></i>Submission Criteria</h4>
-                                <ul class="criteria-list">
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Market analysis and competitive advantage</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Scalability across multiple business units</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Integration with existing Reliance ecosystem</span>
-                                    </li>
-                                </ul>
+                            <div class="reward-badge">
+                                <i class="fas fa-chart-line"></i>
+                                Growth Potential: 150%
                             </div>
                         </div>
-                    </div>
-                    <div class="company-actions">
-                        <div class="reward-badges">
-                            <span class="reward-badge partnership">
-                                <i class="fas fa-handshake"></i>
-                                Partnership Opportunity
-                            </span>
-                            <span class="reward-badge monetary">
-                                <i class="fas fa-coins"></i>
-                                Monetary Rewards
-                            </span>
-                        </div>
-                        <a href="./msme-details/reliance.html" class="view-details-btn">
-                            <i class="fas fa-info-circle"></i>
+                        <a href="msme-details.html?id=textile" class="view-details-btn">
+                            <i class="fas fa-arrow-right"></i>
                             View Details
                         </a>
                     </div>
