@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSME Details - Plan for Money</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --brand-blue: #1A365D;
+            --brand-green: #2C5530;
+            --text-primary: #2D3748;
+            --text-secondary: #718096;
+            --bg-light: #F7FAFC;
+            --reward-color: #D4AF37;
+            --partnership-color: #553C9A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-button {
+            background: var(--brand-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: var(--brand-green);
+            transform: translateY(-2px);
+        }
+
+        .program-header {
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+            color: white;
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .program-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .program-main {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .program-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .company-logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--brand-blue);
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .program-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 24px;
+        }
+
+        .reward-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: white;
+            font-weight: 500;
+            margin-right: 12px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .criteria-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .criteria-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .criteria-list li i {
+            color: var(--brand-green);
+            margin-top: 4px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--brand-blue);
+            opacity: 0.2;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--brand-blue);
+        }
+
+        .timeline-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background: var(--brand-green);
+            transform: translateY(-2px);
+        }
+
+        .action-button.secondary {
+            background: white;
+            color: var(--brand-blue);
+            border: 2px solid var(--brand-blue);
+        }
+
+        .action-button.secondary:hover {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-item {
+            background: var(--bg-light);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--brand-blue);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 1024px) {
+            .program-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .program-title {
+                font-size: 2rem;
+            }
+            
+            .program-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scope-section {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .scope-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .scope-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .scope-list li i {
+            color: var(--brand-green);
+            margin-top: 4px;
+        }
+
+        .scope-list li.out-of-scope i {
+            color: #E53E3E;
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin: 32px 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .impact-item {
+            text-align: center;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .impact-item i {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .impact-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .impact-item p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .problem-statement {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .problem-section {
+            margin-bottom: 24px;
+        }
+
+        .problem-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .problem-section h3 {
+            color: var(--brand-blue);
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .problem-section h3 i {
+            color: var(--brand-green);
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0 32px;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--brand-green);
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .solution-requirements {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-requirements h4 {
+            color: var(--brand-blue);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .conclusion {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <a href="../../index.html" class="nav-button">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+        <a href="./login.html" class="nav-button">
+            <i class="fas fa-sign-in-alt"></i>
+            Login
+        </a>
+    </div>
+
+    <header class="program-header">
+        <div class="container">
+            <div class="company-logo">Z</div>
+            <h1 class="program-title">Zoho Corporation</h1>
+            <p class="program-subtitle">Digital Transformation Challenge</p>
+            <div class="reward-badges">
+                <span class="reward-badge">
+                    <i class="fas fa-trophy"></i>
+                    Reward: ₹5,00,000
+                </span>
+                <span class="reward-badge">
+                    <i class="fas fa-handshake"></i>
+                    Potential Partnership
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="program-info">
+            <div class="program-main">
+                <section>
+                    <h2 class="section-title">Problem Statement</h2>
+                    <div class="problem-statement">
+                        <p>Zoho Corporation is embarking on a critical digital transformation journey to modernize its enterprise infrastructure. Our current technology landscape presents several strategic challenges that require innovative solutions:</p>
+                        
+                        <div class="solution-requirements">
+                            <h4>Legacy System Modernization</h4>
+                            <ul class="bullet-list">
+                                <li>Aging infrastructure built on outdated technologies</li>
+                                <li>Complex interdependencies between systems</li>
+                                <li>Limited scalability and performance bottlenecks</li>
+                                <li>Security vulnerabilities in legacy applications</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="problem-section">
+                            <h3><i class="fas fa-chevron-right"></i>Cloud Migration Strategy</h3>
+                            <ul class="bullet-list">
+                                <li>Inconsistent cloud adoption across departments</li>
+                                <li>Complex data migration requirements</li>
+                                <li>Need for hybrid cloud architecture</li>
+                                <li>Cost optimization in cloud operations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="problem-section">
+                            <h3><i class="fas fa-chevron-right"></i>Data Analytics & Integration</h3>
+                            <ul class="bullet-list">
+                                <li>Siloed data across multiple systems</li>
+                                <li>Lack of real-time analytics capabilities</li>
+                                <li>Inefficient data processing workflows</li>
+                                <li>Limited business intelligence tools</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="problem-section">
+                            <h3><i class="fas fa-chevron-right"></i>Operational Efficiency</h3>
+                            <ul class="bullet-list">
+                                <li>High maintenance costs for legacy systems</li>
+                                <li>Manual processes requiring automation</li>
+                                <li>Inconsistent user experience across platforms</li>
+                                <li>Limited scalability for business growth</li>
+                            </ul>
+                        </div>
+                        
+                        <p class="conclusion">We seek innovative solutions that can address these challenges while ensuring:</p>
+                        
+                        <div class="solution-requirements">
+                            <h4>Minimal disruption to business operations</h4>
+                            <ul class="bullet-list">
+                                <li>Enhanced security and compliance</li>
+                                <li>Improved user experience</li>
+                                <li>Scalable and future-proof architecture</li>
+                                <li>Cost-effective implementation</li>
+                            </ul>
+                        </div>
+                        
+                        <p class="conclusion">The successful solution will enable Zoho to maintain its market leadership while transitioning to a modern, efficient, and secure technology infrastructure.</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Key Challenges</h2>
+                    <ul class="criteria-list">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <div>
+                                <strong>Legacy System Modernization</strong>
+                                <p>Transform outdated systems into modern, cloud-native applications while maintaining business continuity.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <div>
+                                <strong>Cloud Migration Strategy</strong>
+                                <p>Develop and implement a comprehensive cloud migration plan that ensures security and scalability.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <div>
+                                <strong>Data Analytics Integration</strong>
+                                <p>Implement advanced analytics capabilities to derive actionable insights from business data.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Requirements</h2>
+                    <ul class="criteria-list">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <div>
+                                <strong>Scalable Solution</strong>
+                                <p>The solution must be able to handle growing user base and data volume.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <div>
+                                <strong>Cost-effective Approach</strong>
+                                <p>Optimize resource utilization and minimize operational costs.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <div>
+                                <strong>Minimal Downtime</strong>
+                                <p>Ensure smooth transition with minimal disruption to business operations.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">March 1, 2024</div>
+                            <div class="timeline-title">Program Launch</div>
+                            <div class="timeline-description">Start accepting submissions</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">April 15, 2024</div>
+                            <div class="timeline-title">Submission Deadline</div>
+                            <div class="timeline-description">Last date to submit solutions</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 1, 2024</div>
+                            <div class="timeline-title">Winner Announcement</div>
+                            <div class="timeline-description">Selected solutions will be announced</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="program-sidebar">
+                <div class="sidebar-card">
+                    <h3 class="section-title">Program Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">₹5L</div>
+                            <div class="stat-label">Reward</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">45</div>
+                            <div class="stat-label">Days Left</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Submissions</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Winners</div>
+                        </div>
+                    </div>
+                    <button class="action-button">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Solution
+                    </button>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="section-title">Contact</h3>
+                    <p>For any queries regarding this program, please contact:</p>
+                    <p><strong>Program Manager:</strong> John Doe</p>
+                    <p><strong>Email:</strong> john.doe@zoho.com</p>
+                    <button class="action-button secondary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Program Manager
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // MSME Data
+        const msmeData = {
+            'zoho': {
+                logo: 'Z',
+                name: 'Zoho Corporation',
+                subtitle: 'Digital Transformation Challenge',
+                rewards: [
+                    { icon: 'trophy', text: 'Reward: ₹5,00,000' },
+                    { icon: 'handshake', text: 'Potential Partnership' }
+                ],
+                problemStatement: `Zoho Corporation is embarking on a critical digital transformation journey to modernize its enterprise infrastructure. Our current technology landscape presents several strategic challenges that require innovative solutions.
+
+1. Legacy System Modernization
+• Aging infrastructure built on outdated technologies
+• Complex interdependencies between systems
+• Limited scalability and performance bottlenecks
+• Security vulnerabilities in legacy applications
+
+2. Cloud Migration Strategy
+• Inconsistent cloud adoption across departments
+• Complex data migration requirements
+• Need for hybrid cloud architecture
+• Cost optimization in cloud operations
+
+3. Data Analytics & Integration
+• Siloed data across multiple systems
+• Lack of real-time analytics capabilities
+• Inefficient data processing workflows
+• Limited business intelligence tools
+
+4. Operational Efficiency
+• High maintenance costs for legacy systems
+• Manual processes requiring automation
+• Inconsistent user experience across platforms
+• Limited scalability for business growth
+
+We seek innovative solutions that can address these challenges while ensuring:
+• Minimal disruption to business operations
+• Enhanced security and compliance
+• Improved user experience
+• Scalable and future-proof architecture
+• Cost-effective implementation
+
+The successful solution will enable Zoho to maintain its market leadership while transitioning to a modern, efficient, and secure technology infrastructure.`,
+                challenges: [
+                    {
+                        title: 'Legacy System Modernization',
+                        description: 'Transform outdated systems into modern, cloud-native applications while maintaining business continuity.'
+                    },
+                    {
+                        title: 'Cloud Migration Strategy',
+                        description: 'Develop and implement a comprehensive cloud migration plan that ensures security and scalability.'
+                    },
+                    {
+                        title: 'Data Analytics Integration',
+                        description: 'Implement advanced analytics capabilities to derive actionable insights from business data.'
+                    }
+                ],
+                requirements: [
+                    {
+                        title: 'Scalable Solution',
+                        description: 'The solution must be able to handle growing user base and data volume.'
+                    },
+                    {
+                        title: 'Cost-effective Approach',
+                        description: 'Optimize resource utilization and minimize operational costs.'
+                    },
+                    {
+                        title: 'Minimal Downtime',
+                        description: 'Ensure smooth transition with minimal disruption to business operations.'
+                    }
+                ],
+                timeline: [
+                    {
+                        date: 'March 1, 2024',
+                        title: 'Program Launch',
+                        description: 'Start accepting submissions'
+                    },
+                    {
+                        date: 'April 15, 2024',
+                        title: 'Submission Deadline',
+                        description: 'Last date to submit solutions'
+                    },
+                    {
+                        date: 'May 1, 2024',
+                        title: 'Winner Announcement',
+                        description: 'Selected solutions will be announced'
+                    }
+                ],
+                stats: {
+                    reward: '₹5L',
+                    daysLeft: 45,
+                    submissions: 12,
+                    winners: 3
+                },
+                contact: {
+                    manager: 'John Doe',
+                    email: 'john.doe@zoho.com'
+                },
+                scope: {
+                    inScope: [
+                        'Legacy system modernization and cloud migration',
+                        'Data analytics and business intelligence implementation',
+                        'Integration of disparate systems',
+                        'Security and compliance enhancements',
+                        'Performance optimization and scalability improvements',
+                        'User experience improvements',
+                        'Documentation and knowledge transfer'
+                    ],
+                    outOfScope: [
+                        'Hardware infrastructure changes',
+                        'Business process reengineering',
+                        'Staff training and organizational changes',
+                        'Marketing and sales operations',
+                        'Customer support system changes'
+                    ]
+                },
+                impact: [
+                    {
+                        icon: 'chart-line',
+                        title: 'Operational Efficiency',
+                        description: 'Expected 40% improvement in system performance and 30% reduction in maintenance costs'
+                    },
+                    {
+                        icon: 'users',
+                        title: 'User Experience',
+                        description: 'Enhanced user interface and 50% faster response times for end users'
+                    },
+                    {
+                        icon: 'shield-alt',
+                        title: 'Security & Compliance',
+                        description: 'Implementation of modern security protocols and compliance with latest standards'
+                    }
+                ]
+            },
+            'tvs': {
+                logo: 'T',
+                name: 'TVS Motors',
+                subtitle: 'Supply Chain Optimization',
+                rewards: [
+                    { icon: 'trophy', text: 'Reward: ₹3,50,000' },
+                    { icon: 'handshake', text: 'Potential Partnership' }
+                ],
+                problemStatement: `TVS Motors is seeking to revolutionize its supply chain operations through digital transformation. Our current supply chain ecosystem faces critical challenges that impact operational efficiency and customer satisfaction.
+
+1. Inventory Management Challenges
+• Inefficient stock level optimization
+• High inventory holding costs
+• Frequent stockouts and overstock situations
+• Limited visibility across supply chain
+
+2. Logistics Optimization Needs
+• Suboptimal delivery routes
+• High transportation costs
+• Inefficient fleet management
+• Limited real-time tracking capabilities
+
+3. Supplier Integration Issues
+• Manual communication processes
+• Delayed response times
+• Limited supplier visibility
+• Inefficient order processing
+
+4. Sustainability Requirements
+• High carbon footprint in logistics
+• Inefficient resource utilization
+• Limited green initiatives
+• Need for eco-friendly practices
+
+We are looking for comprehensive solutions that will:
+• Optimize inventory levels and reduce costs
+• Enhance logistics efficiency and tracking
+• Improve supplier collaboration
+• Implement sustainable practices
+• Provide real-time visibility and analytics
+
+The ideal solution will transform our supply chain into a competitive advantage while maintaining high service quality and reducing environmental impact.`,
+                challenges: [
+                    {
+                        title: 'Inventory Management',
+                        description: 'Develop an intelligent inventory management system that optimizes stock levels and reduces holding costs.'
+                    },
+                    {
+                        title: 'Logistics Optimization',
+                        description: 'Create a solution to optimize delivery routes and reduce transportation costs while maintaining service quality.'
+                    },
+                    {
+                        title: 'Supplier Integration',
+                        description: 'Implement a seamless integration system for suppliers to improve communication and reduce lead times.'
+                    }
+                ],
+                requirements: [
+                    {
+                        title: 'Real-time Tracking',
+                        description: 'The solution must provide real-time visibility into inventory and shipment status.'
+                    },
+                    {
+                        title: 'Cost Reduction',
+                        description: 'Demonstrate clear cost-saving potential in supply chain operations.'
+                    },
+                    {
+                        title: 'Sustainable Approach',
+                        description: 'Include eco-friendly practices and carbon footprint reduction strategies.'
+                    }
+                ],
+                timeline: [
+                    {
+                        date: 'March 15, 2024',
+                        title: 'Program Launch',
+                        description: 'Start accepting submissions'
+                    },
+                    {
+                        date: 'April 30, 2024',
+                        title: 'Submission Deadline',
+                        description: 'Last date to submit solutions'
+                    },
+                    {
+                        date: 'May 15, 2024',
+                        title: 'Winner Announcement',
+                        description: 'Selected solutions will be announced'
+                    }
+                ],
+                stats: {
+                    reward: '₹3.5L',
+                    daysLeft: 60,
+                    submissions: 8,
+                    winners: 2
+                },
+                contact: {
+                    manager: 'Sarah Smith',
+                    email: 'sarah.smith@tvsmotors.com'
+                },
+                scope: {
+                    inScope: [
+                        'Inventory management system optimization',
+                        'Logistics and route optimization',
+                        'Supplier portal and integration',
+                        'Real-time tracking and monitoring',
+                        'Sustainability initiatives',
+                        'Performance analytics and reporting',
+                        'Integration with existing ERP systems'
+                    ],
+                    outOfScope: [
+                        'Manufacturing process changes',
+                        'Product design modifications',
+                        'Dealer network management',
+                        'Customer relationship management',
+                        'Financial system integration'
+                    ]
+                },
+                impact: [
+                    {
+                        icon: 'truck',
+                        title: 'Logistics Efficiency',
+                        description: 'Expected 35% reduction in transportation costs and 25% improvement in delivery times'
+                    },
+                    {
+                        icon: 'boxes',
+                        title: 'Inventory Optimization',
+                        description: 'Projected 30% reduction in inventory holding costs and 40% decrease in stockouts'
+                    },
+                    {
+                        icon: 'leaf',
+                        title: 'Sustainability',
+                        description: 'Target of 25% reduction in carbon footprint through optimized logistics'
+                    }
+                ]
+            },
+            'autotech': {
+                logo: 'A',
+                name: 'AutoTech Solutions',
+                subtitle: 'Automotive Parts Manufacturer',
+                rewards: [
+                    { icon: 'handshake', text: 'Partnership Opportunity' },
+                    { icon: 'chart-line', text: 'Growth Potential: 200%' }
+                ],
+                problemStatement: `AutoTech Solutions is seeking strategic partnerships to accelerate our growth and innovation in the automotive parts manufacturing sector. We face several strategic challenges that require collaborative solutions.
+
+1. Market Expansion Opportunities
+• Limited presence in emerging markets
+• Need for local market expertise
+• Distribution network gaps
+• Brand awareness challenges
+
+2. Product Innovation Requirements
+• Need for advanced technology integration
+• R&D capabilities enhancement
+• Product portfolio diversification
+• Quality improvement initiatives
+
+3. Manufacturing Excellence
+• Process optimization needs
+• Technology upgrade requirements
+• Quality control enhancement
+• Efficiency improvement goals
+
+4. Strategic Growth Objectives
+• Market share expansion
+• Revenue growth acceleration
+• Customer base diversification
+• Competitive advantage development
+
+We are looking for partners who can help us:
+• Enter new geographical markets
+• Develop innovative products
+• Enhance manufacturing capabilities
+• Establish strong distribution networks
+• Drive sustainable growth
+
+The ideal partnership will combine our manufacturing expertise with complementary capabilities to create a market-leading position in the automotive parts industry.`,
+                challenges: [
+                    {
+                        title: 'Market Expansion',
+                        description: 'Develop strategies to enter new geographical markets and increase market share.'
+                    },
+                    {
+                        title: 'Product Diversification',
+                        description: 'Create innovative automotive parts that meet evolving industry standards and customer needs.'
+                    },
+                    {
+                        title: 'Technology Upgrade',
+                        description: 'Implement advanced manufacturing technologies to improve efficiency and product quality.'
+                    }
+                ],
+                requirements: [
+                    {
+                        title: 'Equity Partnership',
+                        description: 'Willingness to consider equity-based partnership for long-term growth.'
+                    },
+                    {
+                        title: 'Revenue Sharing',
+                        description: 'Clear revenue sharing model that benefits both parties.'
+                    },
+                    {
+                        title: 'Technical Support',
+                        description: 'Ability to provide technical expertise and support for product development.'
+                    }
+                ],
+                timeline: [
+                    {
+                        date: 'April 1, 2024',
+                        title: 'Partnership Program Launch',
+                        description: 'Start accepting proposals'
+                    },
+                    {
+                        date: 'May 15, 2024',
+                        title: 'Proposal Deadline',
+                        description: 'Last date to submit partnership proposals'
+                    },
+                    {
+                        date: 'June 1, 2024',
+                        title: 'Partner Selection',
+                        description: 'Selected partners will be announced'
+                    }
+                ],
+                stats: {
+                    reward: 'N/A',
+                    daysLeft: 75,
+                    submissions: 15,
+                    winners: 5
+                },
+                contact: {
+                    manager: 'Michael Chen',
+                    email: 'michael.chen@autotechsolutions.com'
+                },
+                scope: {
+                    inScope: [
+                        'Market entry strategy development',
+                        'Product development collaboration',
+                        'Technology transfer and implementation',
+                        'Manufacturing process optimization',
+                        'Distribution network development',
+                        'Quality control systems',
+                        'Joint marketing initiatives'
+                    ],
+                    outOfScope: [
+                        'Complete company acquisition',
+                        'Brand identity changes',
+                        'Core technology transfer',
+                        'Employee management',
+                        'Financial restructuring'
+                    ]
+                },
+                impact: [
+                    {
+                        icon: 'globe',
+                        title: 'Market Reach',
+                        description: 'Target of 200% growth in market presence within 2 years'
+                    },
+                    {
+                        icon: 'cogs',
+                        title: 'Manufacturing Efficiency',
+                        description: 'Expected 40% improvement in production efficiency'
+                    },
+                    {
+                        icon: 'lightbulb',
+                        title: 'Innovation',
+                        description: 'Development of 5 new product lines through partnership'
+                    }
+                ]
+            },
+            'textile': {
+                logo: 'T',
+                name: 'Textile Innovations',
+                subtitle: 'Smart Textile Manufacturer',
+                rewards: [
+                    { icon: 'handshake', text: 'Partnership Opportunity' },
+                    { icon: 'chart-line', text: 'Growth Potential: 150%' }
+                ],
+                problemStatement: `Textile Innovations is seeking strategic partnerships to establish leadership in the smart textile manufacturing sector. Our company faces several key challenges in this emerging market.
+
+1. Technology Integration Requirements
+• Advanced sensor integration
+• Smart material development
+• IoT connectivity implementation
+• Data analytics capabilities
+
+2. Manufacturing Modernization
+• Automation implementation needs
+• Process optimization requirements
+• Quality control enhancement
+• Efficiency improvement goals
+
+3. Market Access Challenges
+• International market entry
+• Distribution network development
+• Brand establishment
+• Customer acquisition
+
+4. Innovation & Development
+• R&D capabilities enhancement
+• Product portfolio expansion
+• Technology advancement
+• Quality standards improvement
+
+We are looking for partners who can help us:
+• Develop cutting-edge smart textiles
+• Implement advanced manufacturing processes
+• Establish global market presence
+• Drive innovation in the industry
+• Create sustainable growth
+
+The ideal partnership will combine our textile expertise with technological capabilities to create innovative, market-leading smart textile solutions.`,
+                challenges: [
+                    {
+                        title: 'Smart Fabric Development',
+                        description: 'Create innovative smart fabrics with integrated sensors and responsive materials.'
+                    },
+                    {
+                        title: 'Export Market Entry',
+                        description: 'Develop strategies to enter international markets and establish global presence.'
+                    },
+                    {
+                        title: 'Automation Integration',
+                        description: 'Implement automated manufacturing processes to increase efficiency and reduce costs.'
+                    }
+                ],
+                requirements: [
+                    {
+                        title: 'Joint Venture Opportunity',
+                        description: 'Potential for joint venture with shared resources and expertise.'
+                    },
+                    {
+                        title: 'Technology Transfer',
+                        description: 'Ability to transfer and implement new technologies in manufacturing.'
+                    },
+                    {
+                        title: 'Market Access',
+                        description: 'Existing market presence or strong market entry capabilities.'
+                    }
+                ],
+                timeline: [
+                    {
+                        date: 'April 15, 2024',
+                        title: 'Partnership Program Launch',
+                        description: 'Start accepting proposals'
+                    },
+                    {
+                        date: 'May 30, 2024',
+                        title: 'Proposal Deadline',
+                        description: 'Last date to submit partnership proposals'
+                    },
+                    {
+                        date: 'June 15, 2024',
+                        title: 'Partner Selection',
+                        description: 'Selected partners will be announced'
+                    }
+                ],
+                stats: {
+                    reward: 'N/A',
+                    daysLeft: 90,
+                    submissions: 10,
+                    winners: 3
+                },
+                contact: {
+                    manager: 'Priya Sharma',
+                    email: 'priya.sharma@textileinnovations.com'
+                },
+                scope: {
+                    inScope: [
+                        'Smart fabric development and testing',
+                        'Manufacturing automation implementation',
+                        'International market entry strategy',
+                        'Technology transfer and integration',
+                        'Quality control systems',
+                        'Product certification and compliance',
+                        'Joint R&D initiatives'
+                    ],
+                    outOfScope: [
+                        'Retail operations',
+                        'Brand licensing',
+                        'Core manufacturing facility changes',
+                        'Employee management',
+                        'Financial restructuring'
+                    ]
+                },
+                impact: [
+                    {
+                        icon: 'tshirt',
+                        title: 'Product Innovation',
+                        description: 'Development of 3 new smart textile product lines'
+                    },
+                    {
+                        icon: 'industry',
+                        title: 'Manufacturing',
+                        description: '50% improvement in production efficiency through automation'
+                    },
+                    {
+                        icon: 'chart-bar',
+                        title: 'Market Growth',
+                        description: '150% increase in market reach through strategic partnerships'
+                    }
+                ]
+            }
+        };
+
+        // Update content based on MSME ID
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const msmeId = urlParams.get('id');
+            
+            if (!msmeId || !msmeData[msmeId]) {
+                // Redirect to MSMEs page if invalid ID
+                window.location.href = 'msmes.html';
+                return;
+            }
+
+            const msme = msmeData[msmeId];
+            
+            // Update header content
+            document.querySelector('.company-logo').textContent = msme.logo;
+            document.querySelector('.program-title').textContent = msme.name;
+            document.querySelector('.program-subtitle').textContent = msme.subtitle;
+            
+            // Update reward badges
+            const rewardBadgesContainer = document.querySelector('.reward-badges');
+            rewardBadgesContainer.innerHTML = msme.rewards.map(reward => `
+                <span class="reward-badge">
+                    <i class="fas fa-${reward.icon}"></i>
+                    ${reward.text}
+                </span>
+            `).join('');
+
+            // Update problem statement section
+            const problemStatementSection = document.querySelector('.program-main section:first-child');
+            problemStatementSection.innerHTML = `
+                <h2 class="section-title">Problem Statement</h2>
+                <div class="problem-statement">
+                    <p>${msme.problemStatement.split('\n\n')[0]}</p>
+                    
+                    ${msme.problemStatement.split('\n\n').slice(1).map(section => {
+                        if (section.startsWith('We seek') || section.startsWith('We are looking')) {
+                            return `
+                                <div class="solution-requirements">
+                                    <h4>${section.split('\n')[0]}</h4>
+                                    <ul class="bullet-list">
+                                        ${section.split('\n').slice(1).filter(line => line.trim().startsWith('•')).map(line => `
+                                            <li>${line.replace('•', '').trim()}</li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            `;
+                        }
+                        
+                        const [title, ...points] = section.split('\n');
+                        return `
+                            <div class="problem-section">
+                                <h3><i class="fas fa-chevron-right"></i>${title.replace(/^\d+\.\s*/, '')}</h3>
+                                <ul class="bullet-list">
+                                    ${points.filter(line => line.trim().startsWith('•')).map(line => `
+                                        <li>${line.replace('•', '').trim()}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }).join('')}
+                    
+                    <p class="conclusion">${msme.problemStatement.split('\n\n').pop()}</p>
+                </div>
+            `;
+
+            // Update challenges
+            const challengesList = document.querySelector('.criteria-list');
+            challengesList.innerHTML = msme.challenges.map(challenge => `
+                <li>
+                    <i class="fas fa-check"></i>
+                    <div>
+                        <strong>${challenge.title}</strong>
+                        <p>${challenge.description}</p>
+                    </div>
+                </li>
+            `).join('');
+
+            // Update requirements
+            const requirementsList = document.querySelectorAll('.criteria-list')[1];
+            requirementsList.innerHTML = msme.requirements.map(req => `
+                <li>
+                    <i class="fas fa-check"></i>
+                    <div>
+                        <strong>${req.title}</strong>
+                        <p>${req.description}</p>
+                    </div>
+                </li>
+            `).join('');
+
+            // Update timeline
+            const timelineContainer = document.querySelector('.timeline');
+            timelineContainer.innerHTML = msme.timeline.map(item => `
+                <div class="timeline-item">
+                    <div class="timeline-date">${item.date}</div>
+                    <div class="timeline-title">${item.title}</div>
+                    <div class="timeline-description">${item.description}</div>
+                </div>
+            `).join('');
+
+            // Update stats
+            document.querySelector('.stat-value:nth-child(1)').textContent = msme.stats.reward;
+            document.querySelector('.stat-value:nth-child(2)').textContent = msme.stats.daysLeft;
+            document.querySelector('.stat-value:nth-child(3)').textContent = msme.stats.submissions;
+            document.querySelector('.stat-value:nth-child(4)').textContent = msme.stats.winners;
+
+            // Update contact info
+            document.querySelector('.sidebar-card:last-child p:nth-child(2)').innerHTML = 
+                `<strong>Program Manager:</strong> ${msme.contact.manager}`;
+            document.querySelector('.sidebar-card:last-child p:nth-child(3)').innerHTML = 
+                `<strong>Email:</strong> ${msme.contact.email}`;
+
+            // Update page title
+            document.title = `${msme.name} - Plan for Money`;
+
+            // Add scope section after problem statement
+            const problemStatementSection = document.querySelector('.program-main section:first-child');
+            const scopeSection = document.createElement('section');
+            scopeSection.innerHTML = `
+                <h2 class="section-title">Scope</h2>
+                <div class="scope-grid">
+                    <div>
+                        <h3>In Scope</h3>
+                        <ul class="scope-list">
+                            ${msme.scope.inScope.map(item => `
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Out of Scope</h3>
+                        <ul class="scope-list">
+                            ${msme.scope.outOfScope.map(item => `
+                                <li class="out-of-scope">
+                                    <i class="fas fa-times-circle"></i>
+                                    <span>${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            problemStatementSection.after(scopeSection);
+
+            // Add impact section before timeline
+            const timelineSection = document.querySelector('.timeline').parentElement;
+            const impactSection = document.createElement('section');
+            impactSection.innerHTML = `
+                <h2 class="section-title">Expected Impact</h2>
+                <div class="impact-section">
+                    <div class="impact-grid">
+                        ${msme.impact.map(item => `
+                            <div class="impact-item">
+                                <i class="fas fa-${item.icon}"></i>
+                                <h4>${item.title}</h4>
+                                <p>${item.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            timelineSection.before(impactSection);
+        });
+    </script>
+</body>
+</html> 
