@@ -236,6 +236,92 @@
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
         }
+        /* Timeline Styles */
+        .path-tab {
+            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
+            opacity: 0.7;
+        }
+        .path-tab.active {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+            padding: 0 30px;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+        .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .timeline-content.success {
+            background: linear-gradient(135deg, #D4AF37 0%, #f7e7b7 100%);
+            color: #1A365D;
+        }
+        .timeline-content.success .timeline-icon {
+            background: #1A365D;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .benefit-item:hover {
+            transform: translateY(-3px);
+        }
+        .benefit-item i {
+            color: #1A365D;
+        }
+        @media (max-width: 768px) {
+            .timeline-item {
+                width: 100%;
+                left: 0;
+                padding: 0 15px;
+            }
+            .timeline-item.right {
+                left: 0;
+            }
+            .timeline-icon {
+                left: 0;
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 <body class="font-inter bg-bg-light">
@@ -382,79 +468,196 @@
     </section>
 
     <!-- Three-Path Flow Chart Section -->
-    <section class="success-path-section">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair">Choose Your Path to Success</h2>
-        <div class="success-path-grid">
-          <!-- Incubation Path -->
-          <div class="success-path-col">
-            <div class="success-path-header">Incubation Path</div>
-            <div class="success-path-step" style="background: #2C5530;">
-              Entrepreneur <span class="desc">Start Your Journey</span>
+    <section class="py-24 bg-bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair">Choose Your Path to Success</h2>
+            
+            <!-- Timeline Container -->
+            <div class="max-w-6xl mx-auto">
+                <!-- Path Tabs -->
+                <div class="flex justify-center mb-12 space-x-4">
+                    <button class="path-tab active px-6 py-3 rounded-full text-white font-semibold transition-all duration-300" data-path="incubation">
+                        Incubation Path
+                    </button>
+                    <button class="path-tab px-6 py-3 rounded-full text-white font-semibold transition-all duration-300" data-path="market">
+                        Market Solution Path
+                    </button>
+                    <button class="path-tab px-6 py-3 rounded-full text-white font-semibold transition-all duration-300" data-path="partnership">
+                        Partnership Path
+                    </button>
+                </div>
+
+                <!-- Timeline Paths -->
+                <div class="relative">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-brand-blue to-brand-green"></div>
+
+                    <!-- Incubation Path -->
+                    <div class="path-content active" id="incubation-path">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Entrepreneur</h3>
+                                <p class="text-text-secondary">Start Your Journey</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Innovative Idea</h3>
+                                <p class="text-text-secondary">Submit Your Concept</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Incubation Support</h3>
+                                <p class="text-text-secondary">Expert Guidance & Resources</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">MVP Development</h3>
+                                <p class="text-text-secondary">Build & Test Your Solution</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content success">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Success</h3>
+                                <p class="text-text-secondary">Launch & Scale</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market Solution Path -->
+                    <div class="path-content hidden" id="market-path">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Entrepreneur</h3>
+                                <p class="text-text-secondary">Identify Market Problem</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-puzzle-piece"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Innovative Solution</h3>
+                                <p class="text-text-secondary">Develop Your Answer</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Submit to MSMEs</h3>
+                                <p class="text-text-secondary">Direct Solution Delivery</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content success">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Recognition</h3>
+                                <p class="text-text-secondary">Solution Impact & Visibility</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partnership Path -->
+                    <div class="path-content hidden" id="partnership-path">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Entrepreneur</h3>
+                                <p class="text-text-secondary">Connect with MSMEs</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Joint Innovation</h3>
+                                <p class="text-text-secondary">Collaborative Solution</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Scale-Up Scope</h3>
+                                <p class="text-text-secondary">Submit for Evaluation</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content success">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Partnership Opportunity</h3>
+                                <p class="text-text-secondary">Long-term Collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">
-              Innovative Idea <span class="desc">Submit Your Concept</span>
+
+            <!-- Benefits Section -->
+            <div class="mt-20 text-center">
+                <h3 class="text-2xl font-bold mb-8 gradient-text">Additional Benefits Across All Paths</h3>
+                <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+                    <div class="benefit-item">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Expert Mentorship</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-store"></i>
+                        <span>Market Access</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-tools"></i>
+                        <span>Technical Support</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Networking</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-book"></i>
+                        <span>Resources</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Business Development</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-seedling"></i>
+                        <span>Growth Support</span>
+                    </div>
+                </div>
             </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step" style="background: #2C5530;">
-              Incubation Support <span class="desc">Expert Guidance & Resources</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">
-              MVP Development <span class="desc">Build & Test Your Solution</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step gold">
-              Success <span class="desc">Launch & Scale</span>
-            </div>
-          </div>
-          <!-- Market Solution Path -->
-          <div class="success-path-col">
-            <div class="success-path-header">Market Solution Path</div>
-            <div class="success-path-step" style="background: #2C5530;">
-              Entrepreneur <span class="desc">Identify Market Problem</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">
-              Innovative Solution <span class="desc">Develop Your Answer</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step" style="background: #2C5530;">
-              Submit to MSMEs <span class="desc">Direct Solution Delivery</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step gold">
-              Recognition <span class="desc">Solution Impact & Visibility</span>
-            </div>
-          </div>
-          <!-- Partnership Path -->
-          <div class="success-path-col">
-            <div class="success-path-header">Partnership Path</div>
-            <div class="success-path-step" style="background: #2C5530;">
-              Entrepreneur <span class="desc">Connect with MSMEs</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">
-              Joint Innovation <span class="desc">Collaborative Solution</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step" style="background: #2C5530;">
-              Scale-Up Scope <span class="desc">Submit for Evaluation</span>
-            </div>
-            <div class="success-path-arrow"></div>
-            <div class="success-path-step gold">
-              Partnership Opportunity <span class="desc">Long-term Collaboration</span>
-            </div>
-          </div>
         </div>
-        <div class="success-path-benefits">
-          <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair">Additional Benefits Across All Paths</h2>
-          <div class="success-path-benefits-desc">
-            Expert Mentorship • Market Access • Technical Support • Networking Opportunities • Resource Access • Business Development • Growth Support
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Start of continuous gradient background for Get in Touch and Footer -->
@@ -548,13 +751,10 @@
             if (window.scrollY > 50) {
                 navbar.classList.add('gradient-bg', 'shadow-premium');
                 navbar.classList.remove('bg-transparent');
-                // Make navbar text white for visibility
                 navbar.querySelectorAll('.nav-link, .gradient-button').forEach(link => link.classList.add('text-white'));
-                // Also make logo visible if needed (optional: add a white logo or border if logo is dark)
             } else {
                 navbar.classList.remove('gradient-bg', 'shadow-premium');
                 navbar.classList.add('bg-transparent');
-                // Revert navbar text color
                 navbar.querySelectorAll('.nav-link, .gradient-button').forEach(link => link.classList.remove('text-white'));
             }
         });
@@ -571,6 +771,48 @@
                     });
                 }
             });
+        });
+
+        // Path Tabs Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const pathTabs = document.querySelectorAll('.path-tab');
+            const pathContents = document.querySelectorAll('.path-content');
+
+            // Function to switch paths
+            function switchPath(pathId) {
+                // Hide all path contents
+                pathContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Remove active class from all tabs
+                pathTabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show selected path content
+                const selectedPath = document.getElementById(pathId + '-path');
+                if (selectedPath) {
+                    selectedPath.classList.remove('hidden');
+                }
+                
+                // Add active class to selected tab
+                const selectedTab = document.querySelector(`[data-path="${pathId}"]`);
+                if (selectedTab) {
+                    selectedTab.classList.add('active');
+                }
+            }
+
+            // Add click event listeners to tabs
+            pathTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const pathId = tab.getAttribute('data-path');
+                    switchPath(pathId);
+                });
+            });
+
+            // Initialize with incubation path
+            switchPath('incubation');
         });
     </script>
 </body>
