@@ -166,6 +166,14 @@
             background: linear-gradient(90deg, #D4AF37 60%, #f7e7b7 100%);
             color: #1A365D;
         }
+        .success-path-step.gold {
+            box-shadow: 0 0 0 4px #D4AF3744, 0 8px 24px #D4AF3733;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 0 4px #D4AF3744, 0 8px 24px #D4AF3733; }
+            to   { box-shadow: 0 0 0 8px #f7e7b799, 0 12px 32px #D4AF3755; }
+        }
         .success-path-arrow {
             width: 0; height: 0;
             border-left: 16px solid transparent;
@@ -181,6 +189,23 @@
         }
         .success-path-step.gold + .success-path-arrow {
             border-top-color: #D4AF37;
+        }
+        .success-path-step .step-badge {
+            position: absolute;
+            left: -1.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1A365D;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: bold;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px #1A365D33;
         }
         @media (max-width: 900px) {
             .success-path-grid {
@@ -259,7 +284,7 @@
     <section id="about" class="py-24 bg-bg-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
-                <h2 class="text-4xl sm:text-5xl font-bold text-text-primary mb-8 font-playfair gradient-text" data-aos="fade-up">About Us</h2>
+                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair" data-aos="fade-up">About Us</h2>
                 <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
                     We believe every great idea deserves the right platform to flourish. As your innovation partner, 
                     we unite passionate entrepreneurs with industry mentors and world-class incubators. Together, 
@@ -359,49 +384,74 @@
     <!-- Three-Path Flow Chart Section -->
     <section class="success-path-section">
       <div class="container mx-auto px-4">
-        <div class="success-path-title">Choose Your Path to Success</div>
+        <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair">Choose Your Path to Success</h2>
         <div class="success-path-grid">
           <!-- Incubation Path -->
           <div class="success-path-col">
             <div class="success-path-header">Incubation Path</div>
-            <div class="success-path-step" style="background: #2C5530;">Entrepreneur <span class="desc">Start Your Journey</span></div>
+            <div class="success-path-step" style="background: #2C5530;">
+              Entrepreneur <span class="desc">Start Your Journey</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">Innovative Idea <span class="desc">Submit Your Concept</span></div>
+            <div class="success-path-step blue">
+              Innovative Idea <span class="desc">Submit Your Concept</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step" style="background: #2C5530;">Incubation Support <span class="desc">Expert Guidance & Resources</span></div>
+            <div class="success-path-step" style="background: #2C5530;">
+              Incubation Support <span class="desc">Expert Guidance & Resources</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">MVP Development <span class="desc">Build & Test Your Solution</span></div>
+            <div class="success-path-step blue">
+              MVP Development <span class="desc">Build & Test Your Solution</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step gold">Success <span class="desc">Launch & Scale</span></div>
+            <div class="success-path-step gold">
+              Success <span class="desc">Launch & Scale</span>
+            </div>
           </div>
           <!-- Market Solution Path -->
           <div class="success-path-col">
             <div class="success-path-header">Market Solution Path</div>
-            <div class="success-path-step" style="background: #2C5530;">Entrepreneur <span class="desc">Identify Market Problem</span></div>
+            <div class="success-path-step" style="background: #2C5530;">
+              Entrepreneur <span class="desc">Identify Market Problem</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">Innovative Solution <span class="desc">Develop Your Answer</span></div>
+            <div class="success-path-step blue">
+              Innovative Solution <span class="desc">Develop Your Answer</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step" style="background: #2C5530;">Submit to MSMEs <span class="desc">Direct Solution Delivery</span></div>
+            <div class="success-path-step" style="background: #2C5530;">
+              Submit to MSMEs <span class="desc">Direct Solution Delivery</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step gold">Recognition <span class="desc">Solution Impact & Visibility</span></div>
+            <div class="success-path-step gold">
+              Recognition <span class="desc">Solution Impact & Visibility</span>
+            </div>
           </div>
           <!-- Partnership Path -->
           <div class="success-path-col">
             <div class="success-path-header">Partnership Path</div>
-            <div class="success-path-step" style="background: #2C5530;">Entrepreneur <span class="desc">Connect with MSMEs</span></div>
+            <div class="success-path-step" style="background: #2C5530;">
+              Entrepreneur <span class="desc">Connect with MSMEs</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step blue">Joint Innovation <span class="desc">Collaborative Solution</span></div>
+            <div class="success-path-step blue">
+              Joint Innovation <span class="desc">Collaborative Solution</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step" style="background: #2C5530;">Scale-Up Scope <span class="desc">Submit for Evaluation</span></div>
+            <div class="success-path-step" style="background: #2C5530;">
+              Scale-Up Scope <span class="desc">Submit for Evaluation</span>
+            </div>
             <div class="success-path-arrow"></div>
-            <div class="success-path-step gold">Partnership Opportunity <span class="desc">Long-term Collaboration</span></div>
+            <div class="success-path-step gold">
+              Partnership Opportunity <span class="desc">Long-term Collaboration</span>
+            </div>
           </div>
         </div>
         <div class="success-path-benefits">
-          <div class="success-path-benefits-title">Additional Benefits Across All Paths</div>
+          <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair">Additional Benefits Across All Paths</h2>
           <div class="success-path-benefits-desc">
-            Expert Mentorship • Market Access • Technical Support • Networking Opportunities<br>
-            Resource Access • Business Development • Growth Support
+            Expert Mentorship • Market Access • Technical Support • Networking Opportunities • Resource Access • Business Development • Growth Support
           </div>
         </div>
       </div>
