@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../public/images/favicon.png">
     <style>
         :root {
             --brand-blue: #1A365D;
@@ -37,6 +38,8 @@
             min-height: 50vh;
             display: flex;
             align-items: center;
+            padding-top: 7rem;
+            padding-bottom: 7rem;
         }
 
         .hero-content {
@@ -46,6 +49,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
+            margin-top: 2rem;
         }
 
         .hero-content h1 {
@@ -632,34 +636,29 @@
     </style>
 </head>
 <body>
-    <div class="nav-buttons">
-        <a href="../../index.html" class="nav-button">
-            <i class="fas fa-home"></i>
-            Home
-        </a>
-        <a href="./login.html" class="nav-button">
-            <i class="fas fa-sign-in-alt"></i>
-            Login
-        </a>
-    </div>
+    <!-- Include the common navbar -->
+    <div id="navbar-placeholder"></div>
+    <script>
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+    </script>
 
-    <section class="hero-section">
-        <div class="hero-pattern"></div>
+    <!-- Hero Section -->
+    <header class="hero-section min-h-[60vh] flex items-center justify-center relative overflow-hidden" style="padding-top:7rem; padding-bottom:7rem;">
         <div class="hero-content">
-            <h1>Innovation & Growth Opportunities</h1>
-            <p class="hero-tagline">Connect with Leading Companies & MSMEs</p>
+            <h1 class="hero-title">Innovation & Growth Opportunities</h1>
+            <div class="hero-tagline">"Empowering MSMEs for Success"</div>
             <p class="hero-description">
                 Join our platform to solve corporate challenges for rewards or collaborate with MSMEs for growth opportunities. 
                 Whether you're an innovator, entrepreneur, or business expert, find your perfect match here.
             </p>
-            <div class="hero-buttons">
-                <a href="#corporate-challenges" class="hero-button primary">View Corporate Challenges</a>
-                <a href="#msme-collaboration" class="hero-button secondary">Explore MSME Opportunities</a>
-            </div>
         </div>
-    </section>
+    </header>
 
-        <div class="container" style="max-width: 800px; margin: 2rem auto;">
+    <div class="container" style="max-width: 800px; margin: 2rem auto;">
         <div style="background: #fffbe6; color: #856404; border: 1px solid #ffe58f; border-radius: 8px; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;">
             <strong>Privacy Note:</strong> Your submissions are visible only to you, the MSME, and the platform manager. Other users cannot view your submissions.
         </div>
@@ -855,6 +854,18 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="open-programs" class="companies-section" style="background: #e6f7ff;">
+        <div class="container">
+            <h2 class="section-title">Open Programs</h2>
+            <p class="section-description">Explore ongoing engagement programs, rewards, and partnership opportunities. Find the right match for your expertise and interests.</p>
+            <div style="background: #fff; border-radius: 10px; padding: 2rem; text-align: center; color: #888; font-size: 1.1rem;">
+                <i class="fas fa-bullhorn" style="font-size: 2rem; color: #1A365D;"></i><br>
+                <strong>Open Programs (Coming Soon):</strong><br>
+                Stay tuned for new challenges and partnership opportunities from MSMEs.
             </div>
         </div>
     </section>
