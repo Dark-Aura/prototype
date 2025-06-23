@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="../../public/images/favicon.png">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script src="../js/navbar.js" defer></script>
     <style>
         :root {
             --brand-blue: #1A365D;
@@ -493,12 +497,18 @@
     </style>
 </head>
 <body>
+    <!-- Include the common navbar -->
+    <div id="navbar-placeholder"></div>
+    <script>
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+    </script>
 
-    <a href="../../index.html" class="home-button">
-        <i class="fas fa-home"></i> Home
-    </a>
-
-    <section class="hero-section">
+    <!-- Hero Section -->
+    <header class="hero-section min-h-[60vh] flex items-center justify-center relative overflow-hidden" style="padding-top:7rem; padding-bottom:7rem;">
         <div class="hero-content">
             <h1 class="hero-title">Transform Your Future Through Education</h1>
             <div class="hero-tagline">"Knowledge is the Currency of Tomorrow"</div>
@@ -507,7 +517,7 @@
                 and business leaders with cutting-edge skills and insights.
             </p>
         </div>
-    </section>
+    </header>
 
     <section id="programs" class="live-programs">
         <div class="container">
