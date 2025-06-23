@@ -45,11 +45,11 @@
 </head>
 <body class="font-inter bg-bg-light">
     <!-- Hamburger Button (Top Right) -->
-    <button id="hamburger-btn" class="fixed top-8 right-8 z-50 flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md focus:outline-none group">
-        <div class="relative w-8 h-8 flex flex-col justify-center items-center">
-            <span class="absolute top-3 left-2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:rotate-45 group-hover:translate-y-[12px]" id="line1"></span>
-            <span class="absolute top-6 left-2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:opacity-0 group-hover:-translate-x-2" id="line2"></span>
-            <span class="absolute top-9 left-2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:-rotate-45 group-hover:-translate-y-[12px]" id="line3"></span>
+    <button id="hamburger-btn" class="fixed top-8 right-8 z-50 flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md focus:outline-none group animate-hamburger-wiggle">
+        <div class="w-full h-full flex flex-col justify-center items-center relative">
+            <span class="absolute top-1/2 left-1/2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:rotate-45 group-hover:translate-y-[12px]" id="line1" style="transform: translate(-50%, -10px);"></span>
+            <span class="absolute top-1/2 left-1/2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:opacity-0 group-hover:-translate-x-2" id="line2" style="transform: translate(-50%, 0);"></span>
+            <span class="absolute top-1/2 left-1/2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:-rotate-45 group-hover:-translate-y-[12px]" id="line3" style="transform: translate(-50%, 10px);"></span>
         </div>
     </button>
 
@@ -202,6 +202,22 @@
             color: #D4AF37; /* reward color */
             font-size: 1.5rem;
         }
+        @keyframes hamburger-wiggle {
+            0%, 100% { transform: translateX(0); }
+            15% { transform: translateX(-4px); }
+            30% { transform: translateX(4px); }
+            45% { transform: translateX(-4px); }
+            60% { transform: translateX(4px); }
+            75% { transform: translateX(-2px); }
+            90% { transform: translateX(2px); }
+        }
+        .animate-hamburger-wiggle {
+            animation: hamburger-wiggle 1.2s ease-in-out infinite;
+        }
+        #hamburger-btn.active.animate-hamburger-wiggle,
+        #hamburger-btn:hover.animate-hamburger-wiggle {
+            animation: none !important;
+        }
     </style>
 
     <script>
@@ -221,12 +237,14 @@
             }
             function openSidebar() {
                 hamburgerBtn.classList.add('active');
+                hamburgerBtn.classList.remove('animate-hamburger-wiggle');
                 sidebarNav.classList.add('open');
                 sidebarOverlay.classList.add('open');
                 document.body.classList.add('sidebar-open');
             }
             function closeSidebarFn() {
                 hamburgerBtn.classList.remove('active');
+                hamburgerBtn.classList.add('animate-hamburger-wiggle');
                 sidebarNav.classList.remove('open');
                 sidebarOverlay.classList.remove('open');
                 document.body.classList.remove('sidebar-open');
@@ -266,6 +284,14 @@
             });
             document.getElementById('submenu-column').addEventListener('mouseleave', function() {
                 setActiveSubmenu(null);
+            });
+            hamburgerBtn.addEventListener('mouseenter', function() {
+                hamburgerBtn.classList.remove('animate-hamburger-wiggle');
+            });
+            hamburgerBtn.addEventListener('mouseleave', function() {
+                if (!hamburgerBtn.classList.contains('active')) {
+                    hamburgerBtn.classList.add('animate-hamburger-wiggle');
+                }
             });
         });
     </script>
