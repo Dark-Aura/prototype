@@ -1,0 +1,16 @@
+#navbar {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Remove custom navbar styles that conflict with Tailwind */
+.navbar,
+.navbar .container,
+.logo,
+.nav-links,
+.profile-dropdown,
+.profile-icon,
+.dropdown-menu,
+.dropdown-item,
+.dropdown-divider {
+    all: unset;
+} 
