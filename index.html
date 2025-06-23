@@ -10,7 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="public/images/favicon.png" />
+    <link rel="stylesheet" href="src/css/styles.css">
     <script>
         tailwind.config = {
             theme: {
@@ -38,325 +42,244 @@
             }
         }
     </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
-        }
-        .gradient-card {
-            background: linear-gradient(135deg, #F7FAFC 0%, #ffffff 100%);
-        }
-        .gradient-button {
-            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
-        }
-        .gradient-button-hover {
-            background: linear-gradient(135deg, #2C5530 0%, #1A365D 100%);
-        }
-        .gradient-border {
-            border-image: linear-gradient(135deg, #1A365D 0%, #2C5530 100%) 1;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-        }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #0066CC 0%, #2EAE60 100%);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        /* Enhancements for Success Path Columns */
-        .success-path-section {
-            background: #f7fafc;
-            padding: 3rem 0 2rem 0;
-        }
-        .success-path-title {
-            font-family: 'Montserrat', 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
-            color: #1A365D;
-            letter-spacing: -1px;
-        }
-        .success-path-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-        }
-        .success-path-col {
-            min-width: 320px;
-            max-width: 320px;
-            flex: 1 1 320px;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 6px 32px 0 rgba(26,54,93,0.08);
-            padding: 1.5rem 1.2rem 2rem 1.2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .success-path-col:hover {
-            box-shadow: 0 12px 36px 0 rgba(26,54,93,0.16);
-            transform: translateY(-4px) scale(1.03);
-        }
-        .success-path-header {
-            background: none !important;
-            color: #1A365D;
-            font-family: 'Montserrat', 'Poppins', sans-serif;
-            font-weight: 900;
-            font-size: 1.3rem;
-            text-align: center;
-            margin-bottom: 1.2rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            padding: 0;
-            position: relative;
-        }
-        .success-path-header::after { display: none; }
-        .success-path-step {
-            width: 100%;
-            background: #2C5530;
-            color: #fff;
-            border-radius: 8px;
-            margin: 0.5rem 0;
-            padding: 0.7rem 0.8rem 0.5rem 0.8rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.08rem;
-            text-align: center;
-            position: relative;
-        }
-        .success-path-step .desc {
-            display: block;
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: #e2e8f0;
-            margin-top: 0.2rem;
-        }
-        .success-path-step.alt {
-            background: #223a5e;
-        }
-        .success-path-step.blue {
-            background: #1A365D;
-        }
-        .success-path-step.purple {
-            background: #553C9A;
-        }
-        .success-path-step.gold {
-            background: linear-gradient(90deg, #D4AF37 60%, #f7e7b7 100%);
-            color: #1A365D;
-        }
-        .success-path-step.gold {
-            box-shadow: 0 0 0 4px #D4AF3744, 0 8px 24px #D4AF3733;
-            animation: glow 1.5s infinite alternate;
-        }
-        @keyframes glow {
-            from { box-shadow: 0 0 0 4px #D4AF3744, 0 8px 24px #D4AF3733; }
-            to   { box-shadow: 0 0 0 8px #f7e7b799, 0 12px 32px #D4AF3755; }
-        }
-        .success-path-arrow {
-            width: 0; height: 0;
-            border-left: 16px solid transparent;
-            border-right: 16px solid transparent;
-            border-top: 18px solid #2C5530;
-            margin: 0.1rem auto 0.1rem auto;
-        }
-        .success-path-step.blue + .success-path-arrow {
-            border-top-color: #1A365D;
-        }
-        .success-path-step.purple + .success-path-arrow {
-            border-top-color: #553C9A;
-        }
-        .success-path-step.gold + .success-path-arrow {
-            border-top-color: #D4AF37;
-        }
-        .success-path-step .step-badge {
-            position: absolute;
-            left: -1.8rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #1A365D;
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: bold;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px #1A365D33;
-        }
-        @media (max-width: 900px) {
-            .success-path-grid {
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-            }
-        }
-        .success-path-benefits {
-            margin: 2.5rem auto 0 auto;
-            background: #fff;
-            border-radius: 12px;
-            border: 2px solid #1A365D22;
-            box-shadow: 0 2px 12px 0 rgba(26,54,93,0.06);
-            padding: 1.5rem 2rem;
-            max-width: 700px;
-            text-align: center;
-        }
-        .success-path-benefits-title {
-            font-family: 'Montserrat', 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #1A365D;
-            margin-bottom: 0.5rem;
-        }
-        .success-path-benefits-desc {
-            color: #2C5530;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-        }
-        /* Timeline Styles */
-        .path-tab {
-            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
-            opacity: 0.7;
-        }
-        .path-tab.active {
-            opacity: 1;
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 50px;
-            width: 50%;
-            padding: 0 30px;
-        }
-        .timeline-item.left {
-            left: 0;
-        }
-        .timeline-item.right {
-            left: 50%;
-        }
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-        .timeline-content:hover {
-            transform: translateY(-5px);
-        }
-        .timeline-icon {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1A365D 0%, #2C5530 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .timeline-content.success {
-            background: linear-gradient(135deg, #D4AF37 0%, #f7e7b7 100%);
-            color: #1A365D;
-        }
-        .timeline-content.success .timeline-icon {
-            background: #1A365D;
-        }
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .benefit-item:hover {
-            transform: translateY(-3px);
-        }
-        .benefit-item i {
-            color: #1A365D;
-        }
-        @media (max-width: 768px) {
-            .timeline-item {
-                width: 100%;
-                left: 0;
-                padding: 0 15px;
-            }
-            .timeline-item.right {
-                left: 0;
-            }
-            .timeline-icon {
-                left: 0;
-                transform: translateX(-50%);
-            }
-        }
-    </style>
 </head>
 <body class="font-inter bg-bg-light">
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 gradient-bg shadow-premium">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center">
-                    <a href="/" class="flex items-center">
-                        <img src="logo.png" alt="Logo" class="h-12 w-auto" />
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="src/pages/mentors.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Mentors</a>
-                    <a href="src/pages/msmes.html" class="nav-link text-white hover:text-reward transition-colors duration-200">MSME's</a>
-                    <a href="src/pages/incubators.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Incubators</a>
-                    <a href="src/pages/education.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Education</a>
-                    <a href="src/pages/pricing.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Pricing</a>
-                    <a href="src/pages/blog.html" class="nav-link text-white hover:text-reward transition-colors duration-200">Blog</a>
-                    <a href="src/pages/login.html" class="gradient-button text-white px-8 py-3 rounded-full font-semibold hover:gradient-button-hover transition-all duration-300">Login</a>
-                </div>
+    <!-- Hamburger Button (Top Right) -->
+    <button id="hamburger-btn" class="fixed top-8 right-8 z-50 flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md focus:outline-none group">
+        <div class="relative w-8 h-8 flex flex-col justify-center items-center">
+            <span class="absolute top-3 left-2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:rotate-45 group-hover:translate-y-[12px]" id="line1"></span>
+            <span class="absolute top-6 left-2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:opacity-0 group-hover:-translate-x-2" id="line2"></span>
+            <span class="absolute top-9 left-2 w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center group-hover:-rotate-45 group-hover:-translate-y-[12px]" id="line3"></span>
+        </div>
+    </button>
+
+    <!-- Sidebar Navigation Drawer: Two-column layout -->
+    <div id="sidebar-nav" class="fixed top-0 right-0 h-full w-[700px] max-w-full bg-[rgba(20,20,30,0.3)] backdrop-blur-2xl text-white z-50 opacity-0 pointer-events-none transition-opacity duration-200 flex flex-col">
+        <div class="flex items-center justify-end px-12 py-10 border-b border-white/10 relative">
+            <div class="flex items-center gap-4">
+                <a href="src/pages/login.html" class="relative px-6 py-2" style="background-color: #D4AF37; color: #fff; font-weight:600; border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.08); transition:background 0.2s;">Login</a>
+                <button id="close-sidebar" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/20 transition-all duration-300 focus:outline-none flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
         </div>
-    </nav>
+        <div class="flex flex-1 min-h-0">
+            <!-- Sub-menus column (left) -->
+            <div class="w-1/2 flex flex-col justify-center pl-8 pr-4 space-y-4 relative" id="submenu-column">
+                <div id="submenu-mentors" class="submenu-block bg-white/10 rounded-xl p-4 transition-all duration-200" onmouseenter="setActiveSubmenu('mentors')" onmouseleave="setActiveSubmenu(null)">
+                    <div class="text-lg font-bold mb-2 tracking-widest uppercase text-white">Mentors</div>
+                    <ul class="space-y-1">
+                        <li><a href="src/pages/mentors.html#find" class="block px-2 py-2 text-base text-right hover:bg-white/10 rounded transition-all duration-200 text-white">Find a Mentor</a></li>
+                        <li><a href="src/pages/mentors.html#become" class="block px-2 py-2 text-base text-right hover:bg-white/10 rounded transition-all duration-200 text-white">Become a Mentor</a></li>
+                    </ul>
+                </div>
+                <div id="submenu-msmes" class="submenu-block bg-white/10 rounded-xl p-4 transition-all duration-200 relative" onmouseenter="setActiveSubmenu('msmes')" onmouseleave="setActiveSubmenu(null)">
+                    <div class="text-lg font-bold mb-2 tracking-widest uppercase text-white">MSME's</div>
+                    <ul class="space-y-1">
+                        <li><a href="src/pages/msmes.html#list" class="block px-2 py-2 text-base text-right hover:bg-white/10 rounded transition-all duration-200 text-white">List MSMEs</a></li>
+                        <li><a href="src/pages/msmes.html#join" class="block px-2 py-2 text-base text-right hover:bg-white/10 rounded transition-all duration-200 text-white">Join as MSME</a></li>
+                    </ul>
+                </div>
+                <div id="submenu-incubators" class="submenu-block bg-white/10 rounded-xl p-4 transition-all duration-200" onmouseenter="setActiveSubmenu('incubators')" onmouseleave="setActiveSubmenu(null)">
+                    <div class="text-lg font-bold mb-2 tracking-widest uppercase text-white">Incubators</div>
+                    <ul class="space-y-1">
+                        <li><a href="src/pages/incubators.html#list" class="block px-2 py-2 text-base text-right hover:bg-white/10 rounded transition-all duration-200 text-white">List Incubators</a></li>
+                        <li><a href="src/pages/incubators.html#join" class="block px-2 py-2 text-base text-right hover:bg-white/10 rounded transition-all duration-200 text-white">Join as Incubator</a></li>
+                    </ul>
+                </div>
+                <div id="submenu-contact" class="submenu-block bg-white/10 rounded-xl p-4 transition-all duration-200 flex flex-col items-end" onmouseenter="setActiveSubmenu('contact')" onmouseleave="setActiveSubmenu(null)">
+                    <div class="text-lg font-bold mb-2 tracking-widest uppercase text-white">Contact</div>
+                    <div class="flex gap-4 mt-2">
+                        <a href="mailto:contact@planformoney.com" class="text-white hover:text-blue-400 transition-colors" title="Email"><i class="fas fa-envelope fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="text-white hover:text-blue-500 transition-colors" title="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="text-white hover:text-pink-400 transition-colors" title="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="text-white hover:text-blue-300 transition-colors" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Main menu column (right) -->
+            <nav class="w-1/2 flex flex-col justify-center pr-16 pl-4 space-y-8">
+                <ul class="w-full relative flex flex-col gap-8">
+                    <li class="relative group/menu" onmouseenter="setActiveSubmenu('mentors')" onmouseleave="setActiveSubmenu(null)">
+                        <a href="src/pages/mentors.html" class="block text-2xl font-semibold tracking-widest uppercase py-6 border-b border-white/10 text-right hover:bg-white/10 transition-all duration-200 text-white" data-menu="mentors">Mentors</a>
+                    </li>
+                    <li class="relative group/menu" onmouseenter="setActiveSubmenu('msmes')" onmouseleave="setActiveSubmenu(null)">
+                        <a href="src/pages/msmes.html" class="block text-2xl font-semibold tracking-widest uppercase py-6 border-b border-white/10 text-right hover:bg-white/10 transition-all duration-200 text-white" data-menu="msmes">MSME's</a>
+                    </li>
+                    <li class="relative group/menu" onmouseenter="setActiveSubmenu('incubators')" onmouseleave="setActiveSubmenu(null)">
+                        <a href="src/pages/incubators.html" class="block text-2xl font-semibold tracking-widest uppercase py-6 border-b border-white/10 text-right hover:bg-white/10 transition-all duration-200 text-white" data-menu="incubators">Incubators</a>
+                    </li>
+                    <li class="relative group/menu" onmouseenter="setActiveSubmenu('contact')" onmouseleave="setActiveSubmenu(null)">
+                        <a href="src/pages/contact.html" class="block text-2xl font-semibold tracking-widest uppercase py-6 border-b border-white/10 text-right hover:bg-white/10 transition-all duration-200 text-white" data-menu="contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay: blur only, no background color -->
+    <div id="sidebar-overlay" class="fixed inset-0 backdrop-blur-2xl z-40 opacity-0 pointer-events-none transition-opacity duration-200"></div>
+
+    <style>
+        #hamburger-btn.active #line1,
+        #hamburger-btn:hover #line1 {
+            transform: rotate(45deg) translateY(12px);
+        }
+        #hamburger-btn.active #line2,
+        #hamburger-btn:hover #line2 {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        #hamburger-btn.active #line3,
+        #hamburger-btn:hover #line3 {
+            transform: rotate(-45deg) translateY(-12px);
+        }
+        #sidebar-nav.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #sidebar-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body.sidebar-open {
+            overflow: hidden;
+        }
+        #sidebar-nav a {
+            letter-spacing: 0.2em;
+        }
+        #sidebar-nav a:focus {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+        .submenu-block { opacity: 0.3; filter: blur(2px); transition: all 0.2s; }
+        .submenu-block.active { opacity: 1; filter: blur(0); background: rgba(255,255,255,0.12); }
+        .submenu-block:hover, .submenu-block:focus-within { opacity: 1 !important; filter: blur(0) !important; background: rgba(255,255,255,0.12) !important; }
+        .submenu-block ul li a:hover, .submenu-block ul li a:focus {
+            background: rgba(255,255,255,0.30) !important;
+            color: #222 !important;
+            font-weight: bold;
+            border-left: 4px solid #fff;
+            border-radius: 0.5rem;
+        }
+        /* Sub-sub-menu style */
+        .submenu-block ul li .group-hover\/submenu\:opacity-100 { opacity: 1 !important; pointer-events: auto !important; }
+        .submenu-block ul li ul { opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+        .submenu-block ul li:hover > ul, .submenu-block ul li:focus-within > ul { opacity: 1 !important; pointer-events: auto !important; }
+        /* Timeline path columns fix */
+        .path-content > .flex {
+            padding-left: 2.5rem;  /* Adjust as needed */
+            padding-right: 2.5rem; /* Adjust as needed */
+        }
+        @media (max-width: 1024px) {
+            .path-content {
+                grid-template-columns: 1fr !important;
+            }
+            .path-content > .flex {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        /* Additional Benefits font color */
+        .benefit-item {
+            color: #1A365D; /* brand-blue */
+            font-weight: 600;
+            background: rgba(255,255,255,0.85);
+            border-radius: 1rem;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .benefit-item i {
+            color: #D4AF37; /* reward color */
+            font-size: 1.5rem;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const sidebarNav = document.getElementById('sidebar-nav');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const closeSidebar = document.getElementById('close-sidebar');
+            let submenuActive = null;
+            function toggleSidebar() {
+                const isOpen = hamburgerBtn.classList.contains('active');
+                if (isOpen) {
+                    closeSidebarFn();
+                } else {
+                    openSidebar();
+                }
+            }
+            function openSidebar() {
+                hamburgerBtn.classList.add('active');
+                sidebarNav.classList.add('open');
+                sidebarOverlay.classList.add('open');
+                document.body.classList.add('sidebar-open');
+            }
+            function closeSidebarFn() {
+                hamburgerBtn.classList.remove('active');
+                sidebarNav.classList.remove('open');
+                sidebarOverlay.classList.remove('open');
+                document.body.classList.remove('sidebar-open');
+                setActiveSubmenu(null);
+            }
+            hamburgerBtn.addEventListener('click', toggleSidebar);
+            closeSidebar.addEventListener('click', closeSidebarFn);
+            sidebarOverlay.addEventListener('click', closeSidebarFn);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && hamburgerBtn.classList.contains('active')) {
+                    closeSidebarFn();
+                }
+            });
+            // Submenu hover logic (fixes hover between main and sub-menu)
+            window.setActiveSubmenu = function(name) {
+                submenuActive = name;
+                document.querySelectorAll('.submenu-block').forEach(el => {
+                    el.classList.remove('active');
+                });
+                if (name) {
+                    const el = document.getElementById('submenu-' + name);
+                    if (el) el.classList.add('active');
+                }
+            };
+            // Sub-sub-menu show/hide (for mouseenter/leave)
+            window.showSubSubmenu = function(name) {
+                const el = document.getElementById('subsubmenu-' + name);
+                if (el) el.style.opacity = '1', el.style.pointerEvents = 'auto';
+            };
+            window.hideSubSubmenu = function(name) {
+                const el = document.getElementById('subsubmenu-' + name);
+                if (el) el.style.opacity = '0', el.style.pointerEvents = 'none';
+            };
+            // Keep submenu open if mouse is over submenu column
+            document.getElementById('submenu-column').addEventListener('mouseenter', function() {
+                if (submenuActive) setActiveSubmenu(submenuActive);
+            });
+            document.getElementById('submenu-column').addEventListener('mouseleave', function() {
+                setActiveSubmenu(null);
+            });
+        });
+    </script>
 
     <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 gradient-bg"></div>
         <div class="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative z-10">
-            <img src="logo.png" alt="Logo" class="h-24 w-auto mx-auto mb-12" data-aos="fade-down" />
-            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-8 leading-tight font-playfair" data-aos="fade-right">
+            <img src="logo.png" alt="Logo" class="h-24 w-auto mx-auto mb-12 section" />
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-8 leading-tight font-playfair section">
                 Innovate & Scale<br>Your Business Future
             </h1>
-            <p class="text-xl sm:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+            <p class="text-xl sm:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed section">
                 Connecting visionary entrepreneurs with MSMEs, mentors, and incubators to drive innovation and sustainable growth. Your success story starts here.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="zoom-in" data-aos-delay="200">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center section">
                 <a href="src/pages/contact.html" class="gradient-button text-white font-bold px-8 py-4 rounded-full shadow-premium hover:gradient-button-hover hover:shadow-premium-hover transition-all duration-300">
                     Get Started
                 </a>
@@ -367,44 +290,39 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-bg-light">
+    <!-- About Us Section -->
+    <section class="py-24 bg-bg-light scroll-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair" data-aos="fade-up">About Us</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-6 gradient-text font-playfair" data-aos="fade-up">About Us</h2>
                 <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-                    We believe every great idea deserves the right platform to flourish. As your innovation partner, 
-                    we unite passionate entrepreneurs with industry mentors and world-class incubators. Together, 
-                    we're not just building businesses – we're shaping the future of entrepreneurship.
+                    At Plan for Money, we bridge the gap between innovative ideas and successful businesses. Our platform connects entrepreneurs with industry-leading mentors, cutting-edge incubators, and established MSMEs to foster growth and innovation in the startup ecosystem.
                 </p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
                 <div class="gradient-card rounded-2xl p-8 shadow-premium card-hover border border-brand-blue/20" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 gradient-bg rounded-xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-lightbulb text-white text-3xl"></i>
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-bullseye text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold text-center mb-4 gradient-text">Strategic Innovation</h3>
-                    <p class="text-text-secondary text-center leading-relaxed">Ignite your ideas with expert guidance. We transform innovative concepts into market-ready solutions.</p>
+                    <h3 class="text-xl font-semibold text-center mb-4 gradient-text">Our Mission</h3>
+                    <p class="text-text-secondary text-center">To empower entrepreneurs by providing them with the resources, guidance, and connections they need to transform their innovative ideas into successful ventures.</p>
                 </div>
+
                 <div class="gradient-card rounded-2xl p-8 shadow-premium card-hover border border-brand-blue/20" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-20 h-20 gradient-bg rounded-xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-handshake text-white text-3xl"></i>
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-eye text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold text-center mb-4 gradient-text">MSME Collaboration</h3>
-                    <p class="text-text-secondary text-center leading-relaxed">Bridge the gap between vision and growth. Create powerful partnerships that drive innovation.</p>
+                    <h3 class="text-xl font-semibold text-center mb-4 gradient-text">Our Vision</h3>
+                    <p class="text-text-secondary text-center">To create a thriving ecosystem where startups, MSMEs, and incubators collaborate seamlessly to drive innovation and economic growth.</p>
                 </div>
+
                 <div class="gradient-card rounded-2xl p-8 shadow-premium card-hover border border-brand-blue/20" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-20 h-20 gradient-bg rounded-xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-seedling text-white text-3xl"></i>
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-handshake text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold text-center mb-4 gradient-text">Incubation Excellence</h3>
-                    <p class="text-text-secondary text-center leading-relaxed">Nurture your startup in a thriving ecosystem. Access world-class resources and guidance.</p>
-                </div>
-                <div class="gradient-card rounded-2xl p-8 shadow-premium card-hover border border-brand-blue/20" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-20 h-20 gradient-bg rounded-xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-network-wired text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-center mb-4 gradient-text">Transformative Network</h3>
-                    <p class="text-text-secondary text-center leading-relaxed">Join a powerful community of innovators. Connect with industry leaders who share your passion.</p>
+                    <h3 class="text-xl font-semibold text-center mb-4 gradient-text">Our Values</h3>
+                    <p class="text-text-secondary text-center">Innovation, collaboration, integrity, and excellence guide everything we do as we help shape the future of entrepreneurship.</p>
                 </div>
             </div>
         </div>
@@ -502,11 +420,10 @@
 
     <!-- Three-Path Flow Chart Section -->
     <section class="py-24 bg-bg-light">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair">Choose Your Path to Success</h2>
-            
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-20 gradient-text font-playfair" data-aos="fade-up">Choose Your Path to Success</h2>
             <!-- Timeline Container -->
-            <div class="max-w-6xl mx-auto">
+            <div class="max-w-5xl mx-auto">
                 <!-- Path Tabs -->
                 <div class="flex justify-center mb-12 space-x-4">
                     <button class="path-tab active px-6 py-3 rounded-full text-white font-semibold transition-all duration-300" data-path="incubation">
@@ -519,143 +436,152 @@
                         Partnership Path
                     </button>
                 </div>
-
-                <!-- Timeline Paths -->
+                <!-- Timeline Paths (Side-by-side Grid) -->
                 <div class="relative">
                     <!-- Vertical Line -->
-                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-brand-blue to-brand-green"></div>
-
+                    <div class="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-brand-blue to-brand-green z-0"></div>
                     <!-- Incubation Path -->
-                    <div class="path-content active" id="incubation-path">
-                        <div class="timeline-item left">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                    <div class="path-content active grid grid-cols-2 gap-y-10 relative z-10" id="incubation-path">
+                        <!-- Row 1 -->
+                        <div class="flex justify-end items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -left-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-rocket"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Entrepreneur</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Entrepreneur</h3>
                                 <p class="text-text-secondary">Start Your Journey</p>
                             </div>
                         </div>
-                        <div class="timeline-item right">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                        <div></div>
+                        <!-- Row 2 -->
+                        <div></div>
+                        <div class="flex justify-start items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -right-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-lightbulb"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Innovative Idea</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Innovative Idea</h3>
                                 <p class="text-text-secondary">Submit Your Concept</p>
                             </div>
                         </div>
-                        <div class="timeline-item left">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                        <!-- Row 3 -->
+                        <div class="flex justify-end items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -left-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-hands-helping"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Incubation Support</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Incubation Support</h3>
                                 <p class="text-text-secondary">Expert Guidance & Resources</p>
                             </div>
                         </div>
-                        <div class="timeline-item right">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                        <div></div>
+                        <!-- Row 4 -->
+                        <div></div>
+                        <div class="flex justify-start items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -right-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-code"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">MVP Development</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">MVP Development</h3>
                                 <p class="text-text-secondary">Build & Test Your Solution</p>
                             </div>
                         </div>
-                        <div class="timeline-item left">
-                            <div class="timeline-content success">
-                                <div class="timeline-icon">
+                        <!-- Row 5 -->
+                        <div class="flex justify-end items-center relative">
+                            <div class="timeline-content w-full bg-gradient-to-br from-reward to-yellow-200">
+                                <div class="timeline-icon absolute -left-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-trophy"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Success</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Success</h3>
                                 <p class="text-text-secondary">Launch & Scale</p>
                             </div>
                         </div>
+                        <div></div>
                     </div>
-
                     <!-- Market Solution Path -->
-                    <div class="path-content hidden" id="market-path">
-                        <div class="timeline-item left">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                    <div class="path-content hidden grid grid-cols-2 gap-y-10 relative z-10" id="market-path">
+                        <!-- Row 1 -->
+                        <div class="flex justify-end items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -right-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-search"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Entrepreneur</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Entrepreneur</h3>
                                 <p class="text-text-secondary">Identify Market Problem</p>
                             </div>
                         </div>
-                        <div class="timeline-item right">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                        <div class="flex justify-start items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -left-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-puzzle-piece"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Innovative Solution</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Innovative Solution</h3>
                                 <p class="text-text-secondary">Develop Your Answer</p>
                             </div>
                         </div>
-                        <div class="timeline-item left">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                        <!-- Row 2 -->
+                        <div class="flex justify-end items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -right-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-building"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Submit to MSMEs</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Submit to MSMEs</h3>
                                 <p class="text-text-secondary">Direct Solution Delivery</p>
                             </div>
                         </div>
-                        <div class="timeline-item right">
-                            <div class="timeline-content success">
-                                <div class="timeline-icon">
+                        <div class="flex justify-start items-center relative">
+                            <div class="timeline-content w-full bg-gradient-to-br from-reward to-yellow-200">
+                                <div class="timeline-icon absolute -left-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Recognition</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Recognition</h3>
                                 <p class="text-text-secondary">Solution Impact & Visibility</p>
                             </div>
                         </div>
                     </div>
-
                     <!-- Partnership Path -->
-                    <div class="path-content hidden" id="partnership-path">
-                        <div class="timeline-item left">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                    <div class="path-content hidden grid grid-cols-2 gap-y-10 relative z-10" id="partnership-path">
+                        <!-- Row 1 -->
+                        <div class="flex justify-end items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -right-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-handshake"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Entrepreneur</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Entrepreneur</h3>
                                 <p class="text-text-secondary">Connect with MSMEs</p>
                             </div>
                         </div>
-                        <div class="timeline-item right">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                        <div class="flex justify-start items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -left-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-users"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Joint Innovation</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Joint Innovation</h3>
                                 <p class="text-text-secondary">Collaborative Solution</p>
                             </div>
                         </div>
-                        <div class="timeline-item left">
-                            <div class="timeline-content">
-                                <div class="timeline-icon">
+                        <!-- Row 2 -->
+                        <div class="flex justify-end items-center relative">
+                            <div class="timeline-content w-full">
+                                <div class="timeline-icon absolute -right-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-chart-line"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Scale-Up Scope</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Scale-Up Scope</h3>
                                 <p class="text-text-secondary">Submit for Evaluation</p>
                             </div>
                         </div>
-                        <div class="timeline-item right">
-                            <div class="timeline-content success">
-                                <div class="timeline-icon">
+                        <div class="flex justify-start items-center relative">
+                            <div class="timeline-content w-full bg-gradient-to-br from-reward to-yellow-200">
+                                <div class="timeline-icon absolute -left-6 top-1/2 -translate-y-1/2 bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-lg">
                                     <i class="fas fa-handshake"></i>
                                 </div>
-                                <h3 class="text-xl font-bold mb-2">Partnership Opportunity</h3>
+                                <h3 class="text-xl font-bold mb-2 text-brand-blue">Partnership Opportunity</h3>
                                 <p class="text-text-secondary">Long-term Collaboration</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Benefits Section -->
             <div class="mt-20 text-center">
                 <h3 class="text-2xl font-bold mb-8 gradient-text">Additional Benefits Across All Paths</h3>
@@ -693,160 +619,155 @@
         </div>
     </section>
 
-    <!-- Start of continuous gradient background for Get in Touch and Footer -->
-    <div class="gradient-bg pt-24 pb-0">
-        <section class="py-24 m-0 p-0">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Combined Get in Touch and Footer Section -->
+    <section class="relative">
+        <!-- Background with gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#1A365D] to-[#2C5530]"></div>
+
+        <div class="relative z-10 pt-24 pb-8">
+            <!-- Get in Touch Content -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
                 <h2 class="text-4xl sm:text-5xl font-bold mb-8 text-white font-playfair" data-aos="fade-up">Get in Touch</h2>
-                <p class="text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">Ready to start your journey? Contact us today and let's build something amazing together!</p>
-                <a href="src/pages/contact.html" class="bg-white text-brand-blue px-8 py-4 rounded-full font-semibold shadow-premium hover:bg-brand-green hover:text-white transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-xl text-white mb-12 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                    Ready to start your journey? Contact us today and let's build something amazing together!
+                </p>
+                <a href="src/pages/contact.html" class="inline-block bg-white text-brand-blue px-8 py-4 rounded-full font-semibold shadow-premium hover:bg-opacity-90 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
                     Contact Us
                 </a>
             </div>
-        </section>
 
-        <footer class="py-16 m-0 p-0 border-0">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Footer Content -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
                 <div class="grid md:grid-cols-4 gap-8 mb-12">
                     <div>
-                        <h3 class="text-lg font-semibold mb-4 text-white">Plan For Money</h3>
-                        <p class="text-white/80 mb-4">Empowering startups to achieve their full potential through expert guidance and support.</p>
+                        <h3 class="text-lg font-semibold mb-6 text-white">Plan For Money</h3>
+                        <p class="text-white text-base mb-6 leading-relaxed">
+                            Empowering startups to achieve their full potential through expert guidance and support.
+                        </p>
                         <div class="flex space-x-4">
-                            <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">
+                            <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200">
                                 <i class="fab fa-linkedin text-xl"></i>
                             </a>
-                            <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">
+                            <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200">
                                 <i class="fab fa-twitter text-xl"></i>
                             </a>
-                            <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">
+                            <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200">
                                 <i class="fab fa-facebook text-xl"></i>
                             </a>
-                            <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">
+                            <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200">
                                 <i class="fab fa-instagram text-xl"></i>
                             </a>
                         </div>
                     </div>
+
                     <div>
-                        <h3 class="text-lg font-semibold mb-4 text-white">Quick Links</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#about" class="text-white/80 hover:text-white transition-colors duration-200">About</a></li>
-                            <li><a href="src/pages/mentors.html" class="text-white/80 hover:text-white transition-colors duration-200">Mentors</a></li>
-                            <li><a href="src/pages/msmes.html" class="text-white/80 hover:text-white transition-colors duration-200">MSME's</a></li>
-                            <li><a href="src/pages/incubators.html" class="text-white/80 hover:text-white transition-colors duration-200">Incubators</a></li>
+                        <h3 class="text-lg font-semibold mb-6 text-white">Quick Links</h3>
+                        <ul class="space-y-4">
+                            <li>
+                                <a href="#about" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    About
+                                </a>
+                            </li>
+                            <li>
+                                <a href="src/pages/mentors.html" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    Mentors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="src/pages/msmes.html" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    MSME's
+                                </a>
+                            </li>
+                            <li>
+                                <a href="src/pages/incubators.html" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    Incubators
+                                </a>
+                            </li>
                         </ul>
                     </div>
+
                     <div>
-                        <h3 class="text-lg font-semibold mb-4 text-white">Resources</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-white/80 hover:text-white transition-colors duration-200">Blog</a></li>
-                            <li><a href="#" class="text-white/80 hover:text-white transition-colors duration-200">Case Studies</a></li>
-                            <li><a href="#" class="text-white/80 hover:text-white transition-colors duration-200">FAQ</a></li>
-                            <li><a href="#" class="text-white/80 hover:text-white transition-colors duration-200">Support</a></li>
+                        <h3 class="text-lg font-semibold mb-6 text-white">Resources</h3>
+                        <ul class="space-y-4">
+                            <li>
+                                <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    Case Studies
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    FAQ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white hover:text-gray-200 transition-colors duration-200 block">
+                                    Support
+                                </a>
+                            </li>
                         </ul>
                     </div>
+
                     <div>
-                        <h3 class="text-lg font-semibold mb-4 text-white">Contact</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center text-white/80">
-                                <i class="fas fa-phone mr-2 text-white"></i>
-                                +91 98765 43210
+                        <h3 class="text-lg font-semibold mb-6 text-white">Contact</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center text-white group">
+                                <i class="fas fa-phone mr-3 group-hover:text-gray-200 transition-colors duration-200"></i>
+                                <span class="hover:text-gray-200 transition-colors duration-200">+91 98765 43210</span>
                             </li>
-                            <li class="flex items-center text-white/80">
-                                <i class="fas fa-envelope mr-2 text-white"></i>
-                                contact@planformoney.com
+                            <li class="flex items-center text-white group">
+                                <i class="fas fa-envelope mr-3 group-hover:text-gray-200 transition-colors duration-200"></i>
+                                <span class="hover:text-gray-200 transition-colors duration-200">contact@planformoney.com</span>
                             </li>
-                            <li class="flex items-center text-white/80">
-                                <i class="fas fa-map-marker-alt mr-2 text-white"></i>
-                                Salem, Tamil Nadu, India 636005
+                            <li class="flex items-center text-white group">
+                                <i class="fas fa-map-marker-alt mr-3 group-hover:text-gray-200 transition-colors duration-200"></i>
+                                <span class="hover:text-gray-200 transition-colors duration-200">Salem, Tamil Nadu, India 636005</span>
                             </li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="border-t border-white/20 pt-8 text-center">
-                    <p class="text-white/80">&copy; 2025 Plan For Money. All rights reserved.</p>
+                    <p class="text-white">&copy; 2025 Plan For Money. All rights reserved.</p>
                 </div>
             </div>
-        </footer>
-    </div>
-    <!-- End of continuous gradient background for Get in Touch and Footer -->
+        </div>
+    </section>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="src/js/script.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.path-tab');
+        const contents = {
+            incubation: document.getElementById('incubation-path'),
+            market: document.getElementById('market-path'),
+            partnership: document.getElementById('partnership-path')
+        };
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('gradient-bg', 'shadow-premium');
-                navbar.classList.remove('bg-transparent');
-                navbar.querySelectorAll('.nav-link, .gradient-button').forEach(link => link.classList.add('text-white'));
-            } else {
-                navbar.classList.remove('gradient-bg', 'shadow-premium');
-                navbar.classList.add('bg-transparent');
-                navbar.querySelectorAll('.nav-link, .gradient-button').forEach(link => link.classList.remove('text-white'));
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active from all tabs
+                tabs.forEach(t => t.classList.remove('active', 'bg-brand-blue', 'bg-brand-green'));
+                // Hide all contents
+                Object.values(contents).forEach(c => {
+                    c.classList.add('hidden');
+                    c.classList.remove('active');
+                });
+                // Set active tab and show content
+                this.classList.add('active', 'bg-brand-blue');
+                const path = this.getAttribute('data-path');
+                if (contents[path]) {
+                    contents[path].classList.remove('hidden');
+                    contents[path].classList.add('active');
                 }
             });
         });
-
-        // Path Tabs Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const pathTabs = document.querySelectorAll('.path-tab');
-            const pathContents = document.querySelectorAll('.path-content');
-
-            // Function to switch paths
-            function switchPath(pathId) {
-                // Hide all path contents
-                pathContents.forEach(content => {
-                    content.classList.add('hidden');
-                });
-                
-                // Remove active class from all tabs
-                pathTabs.forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                
-                // Show selected path content
-                const selectedPath = document.getElementById(pathId + '-path');
-                if (selectedPath) {
-                    selectedPath.classList.remove('hidden');
-                }
-                
-                // Add active class to selected tab
-                const selectedTab = document.querySelector(`[data-path="${pathId}"]`);
-                if (selectedTab) {
-                    selectedTab.classList.add('active');
-                }
-            }
-
-            // Add click event listeners to tabs
-            pathTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const pathId = tab.getAttribute('data-path');
-                    switchPath(pathId);
-                });
-            });
-
-            // Initialize with incubation path
-            switchPath('incubation');
-        });
+    });
     </script>
 </body>
 </html>
