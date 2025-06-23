@@ -80,9 +80,31 @@
         .hero-tagline {
             font-size: 2rem;
             font-weight: 600;
-            margin: 1.5rem 0;
-            color: rgba(255, 255, 255, 0.95);
-            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+            color: var(--reward);
+        }
+
+        .hero-tagline::before,
+        .hero-tagline::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 50px;
+            background: rgba(255, 255, 255, 0.5);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hero-tagline::before {
+            right: calc(100% + 20px);
+        }
+
+        .hero-tagline::after {
+            left: calc(100% + 20px);
         }
 
         .hero-description {
@@ -463,6 +485,14 @@
             .hero-btn {
                 padding: 6px 12px;
                 font-size: 0.8125rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+            .hero-tagline::before,
+            .hero-tagline::after {
+                width: 30px;
             }
         }
 
